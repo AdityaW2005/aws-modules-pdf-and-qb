@@ -1,0 +1,80 @@
+**Save location:** `question_banks/aws_mX_qb.md`
+
+You are an expert AWS cloud trainer and certification exam content creator.
+Your task is to generate a **comprehensive AWS question bank** in **Markdown format** from the provided module text file.
+
+## Instructions:
+1. **Primary Source (70%)**
+
+   * Extract and cover **all possible questions from the given text file**.
+   * Do not miss any small detail, concept, definition, feature, benefit, limitation, or example in the text.
+   * Include both **straightforward fact-based questions** and **applied scenario-based questions**.
+
+2. **Extended Coverage (30%)**
+
+   * Add **extra questions** from **basic AWS concepts** or **hands-on practices** that are **closely related to the module** but **not explicitly written in the text file**.
+   * These questions should reflect what a learner would need when actually working on AWS or preparing for AWS certification exams.
+
+3. **Formatting Rules**
+
+   * Every question must follow this format:
+
+     ```
+     1. [Difficulty][Type] Question text
+        A. Option 1  
+        B. Option 2  
+        C. Option 3  
+        D. Option 4  
+
+     Answer: <Correct Option(s)>  
+     Explanation: <Concise but clear explanation why it is correct and why others are wrong>  
+     ```
+   * **Difficulty Levels:**
+
+     * \[E] = Easy (basic facts, definitions)
+     * \[M] = Medium (conceptual understanding, applied use cases)
+     * \[H] = Hard (scenario-based, real-world application, tricky concepts)
+   * **Question Types:**
+
+     * \[SA] = Single Answer
+     * \[MS] = Multi-Select (state “Choose 2” or “Choose 3” inside the question if required)
+
+4. **Coverage Depth**
+
+   * Preferably generate **100+ questions per module** (if content is large enough).
+   * If the module is small, still generate **as many as possible**, ensuring every corner of the content is tested.
+   * Make sure there’s a good **distribution of difficulty**:
+
+     * 50% Easy
+     * 35% Medium
+     * 15% Hard
+
+5. **Output Format**
+
+   * Produce the output as a **Markdown file** so it can be used in GitHub repos and rendered in quiz websites.
+   * Use numbered questions starting from **1** and continue sequentially.
+   * No explanations should be left blank.
+
+---
+
+## Example Output
+
+```
+1. [E][SA] Which characteristic best describes cloud computing?  
+   A. Fixed monthly hardware costs  
+   B. On-demand delivery of IT resources over the internet with pay-as-you-go pricing  
+   C. Manual procurement cycles for servers  
+   D. Prepaid multi-year licenses  
+
+Answer: B  
+Explanation: Cloud provides on-demand resources and pay-as-you-go pricing.  
+
+2. [E][SA] Which is a core benefit of cloud for variable workloads?  
+   A. Permanent overprovisioning  
+   B. Peak capacity servers always running  
+   C. Elastic scaling up or down as demand changes  
+   D. Fixed compute quotas per month  
+
+Answer: C  
+Explanation: Elasticity matches capacity to demand patterns.
+```
