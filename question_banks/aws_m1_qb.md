@@ -1,7 +1,3 @@
-# AWS Module 1: Cloud Concepts Overview - Comprehensive Question Bank
-
-## Module 1: Introduction to Cloud Computing, AWS, and Cloud Adoption Framework
-
 1. [E][SA] What is the definition of cloud computing according to AWS?
    A. A method of storing files locally on physical servers  
    B. The on-demand delivery of compute power, database, storage, applications, and other IT resources via the internet with pay-as-you-go pricing  
