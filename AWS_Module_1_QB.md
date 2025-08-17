@@ -1,532 +1,438 @@
-# AWS Cloud Concepts Overview — Full MCQ Bank
+## Module 1: Cloud Concepts Overview
 
-## Table of Contents
+1.  What is the definition of cloud computing according to the provided material?
+    A. A method of storing files locally on a physical server you own.
+    B. The on-demand delivery of IT resources via the internet with pay-as-you-go pricing.
+    C. A private network of computers used for internal business applications only.
+    D. The process of buying and managing physical data centers for large-scale applications.
+    **Answer: B**
 
-- [Section A: Cloud Computing Fundamentals](#section-a-cloud-computing-fundamentals)
-- [Section B: Six Advantages of Cloud Computing](#section-b-six-advantages-of-cloud-computing)
-- [Section C: Core AWS Services and Concepts](#section-c-core-aws-services-and-concepts)
-- [Section D: AWS Cloud Adoption Framework (CAF) — Overview](#section-d-aws-cloud-adoption-framework-caf--overview)
-- [Section E: CAF — Security Perspective](#section-e-caf--security-perspective)
-- [Section F: CAF — Operations Perspective](#section-f-caf--operations-perspective)
-- [Section G: Mixed CAF Mapping](#section-g-mixed-caf-mapping)
-- [Section H: Knowledge-Check Style (From Module Themes)](#section-h-knowledge-check-style-from-module-themes)
-- [Section I: Scenario-Based](#section-i-scenario-based)
-- [Section J: Rapid Recall (Flash)](#section-j-rapid-recall-flash)
+2.  In the traditional computing model, infrastructure is treated as what?
+    A. Software
+    B. A disposable resource
+    C. Hardware
+    D. A variable expense
+    **Answer: C**
 
-Notes
+3.  What is a major prohibitive aspect of the traditional computing model?
+    A. Short hardware procurement cycles
+    B. The ability to scale down easily
+    C. Low upfront investment
+    D. A long hardware procurement cycle and capital expenditure
+    **Answer: D**
 
-- Difficulty: [E]=Easy, [M]=Medium, [H]=Hard
-- Question types: SA=Single Answer, MS=Multi-Select (choose 2 or 3 as stated)
+4.  How does the cloud computing model treat infrastructure?
+    A. As a permanent, physical asset
+    B. As software
+    C. As a capital expense
+    D. As a fixed, unchangeable system
+    **Answer: B**
 
-## Section A: Cloud Computing Fundamentals
+5.  Which cloud service model provides the highest level of flexibility and management control over your IT resources?
+    A. Software as a Service (SaaS)
+    B. Platform as a Service (PaaS)
+    C. Infrastructure as a Service (IaaS)
+    D. Function as a Service (FaaS)
+    **Answer: C**
 
-1. [E][SA] Which characteristic best describes cloud computing?
-   A. Fixed monthly hardware costs
-   B. On-demand delivery of IT resources over the internet with pay-as-you-go pricing
-   C. Manual procurement cycles for servers
-   D. Prepaid multi-year licenses
+6.  A company wants to use a cloud service that manages the underlying hardware and operating systems, allowing them to focus only on deploying and managing their applications. Which service model should they choose?
+    A. Infrastructure as a Service (IaaS)
+    B. Platform as a Service (PaaS)
+    C. Software as a Service (SaaS)
+    D. On-premises
+    **Answer: B**
 
-Answer: B
-Explanation: Cloud provides on-demand resources and pay-as-you-go pricing.
+7.  Web-based email, where a user only needs to think about how to use the software without managing the underlying infrastructure, is an example of which cloud service model?
+    A. IaaS
+    B. PaaS
+    C. SaaS
+    D. Hybrid
+    **Answer: C**
 
-2. [E][SA] Which is a core benefit of cloud for variable workloads?
-   A. Permanent overprovisioning
-   B. Peak capacity servers always running
-   C. Elastic scaling up or down as demand changes
-   D. Fixed compute quotas per month
+8.  Which cloud deployment model involves an application being fully deployed in the cloud, with all parts running on cloud resources?
+    A. On-premises
+    B. Hybrid
+    C. Private Cloud
+    D. Cloud
+    **Answer: D**
 
-Answer: C
-Explanation: Elasticity matches capacity to demand patterns.
+9.  A company wants to extend its existing on-premises infrastructure into the cloud while keeping some resources internal. What deployment model does this describe?
+    A. Cloud-native
+    B. On-premises
+    C. Hybrid
+    D. Public Cloud
+    **Answer: C**
 
-3. [M][SA] In cloud economics, which statement is accurate?
-   A. Cloud shifts variable expense to fixed capital expense
-   B. Cloud shifts fixed capital expense to variable operating expense
-   C. Cloud requires higher upfront expenditures
-   D. Cloud cost is independent of usage
+10. Deploying resources on-premises using virtualization and resource management tools is sometimes called what?
+    A. Public Cloud
+    B. Hybrid Cloud
+    C. Private Cloud
+    D. Community Cloud
+    **Answer: C**
 
-Answer: B
-Explanation: CAPEX to OPEX shift is a key advantage.
-
-4. [M][SA] Which AWS service provides resizable compute capacity in the cloud?
-   A. Amazon S3
-   B. Amazon EC2
-   C. Amazon RDS
-   D. AWS Lambda@Edge
-
-Answer: B
-Explanation: EC2 is the core IaaS compute service.
-
-5. [M][MS choose 2] Which are common cloud deployment models?
-   A. Private cloud
-   B. Legacy bare-metal only
-   C. Public cloud
-   D. Analog compute grid
-
-Answers: A, C
-Explanation: Standard deployment models include public, private, and hybrid.
-
-## Section B: Six Advantages of Cloud Computing
-
-6. [E][SA] “Stop guessing capacity” refers to:
-   A. Buying twice the servers needed
-   B. Elastic scaling to match demand
-   C. Purchasing large monolithic servers
-   D. Annual procurement cycles
-
-Answer: B
-
-7. [E][SA] “Go global in minutes” primarily enables:
-   A. Lower code complexity
-   B. Lower network latency for global users
-   C. Free data transfer
-   D. Guaranteed 0ms latency
-
-Answer: B
-
-8. [M][MS choose 2] Which advantages relate to economics?
-   A. Trade fixed expense for variable expense
-   B. Increase speed and agility
-   C. Benefit from massive economies of scale
-   D. Go global in minutes
-
-Answers: A, C
-
-9. [M][SA] Which advantage primarily supports faster experimentation?
-   A. Benefit from economies of scale
-   B. Increase speed and agility
-   C. Stop spending money on data centers
-   D. Go global in minutes
-
-Answer: B
-
-10. [M][SA] Which advantage helps avoid idle resources during off-peak times?
-    A. Stop spending money running and maintaining data centers
+11. Which of the following is one of the six advantages of cloud computing?
+    A. Increase capital expense
     B. Stop guessing capacity
-    C. Trade fixed expense for variable expense
+    C. Go local in minutes
+    D. Benefit from small economies of scale
+    **Answer: B**
+
+12. What does the cloud advantage "Trade capital expense for variable expense" mean?
+    A. You must invest heavily in data centers before knowing how you'll use them.
+    B. You pay for what you consume, avoiding large upfront hardware costs.
+    C. You are locked into long-term contracts for physical assets.
+    D. You pay a fixed monthly fee regardless of usage.
+    **Answer: B**
+
+13. The ability of cloud providers like AWS to achieve higher economies of scale and pass savings to customers is which advantage of cloud computing?
+    A. Increase speed and agility
+    B. Stop guessing capacity
+    C. Go global in minutes
+    D. Benefit from massive economies of scale
+    **Answer: D**
+
+14. How does cloud computing help organizations with capacity planning?
+    A. It forces them to predict theoretical maximum peaks accurately.
+    B. It eliminates guessing by allowing them to access as much or as little capacity as needed.
+    C. It requires purchasing and racking expensive idle resources.
+    D. It requires a long procurement cycle to add more capacity.
+    **Answer: B**
+
+15. The ability to launch new IT resources in minutes instead of weeks is an example of which cloud advantage?
+    A. Benefit from massive economies of scale
+    B. Trade capital expense for variable expense
+    C. Increase speed and agility
     D. Go global in minutes
+    **Answer: C**
 
-Answer: C
+16. By moving to the cloud, companies can focus on their own customers and projects instead of the "heavy lifting of racking, stacking, and powering servers." This corresponds to which advantage?
+    A. Stop spending money on running and maintaining data centers
+    B. Stop guessing capacity
+    C. Increase speed and agility
+    D. Go global in minutes
+    **Answer: A**
 
-## Section C: Core AWS Services and Concepts
+17. A company wants to expand its services to a new continent to provide lower latency for its customers there. Which cloud advantage directly addresses this need?
+    A. Trade capital expense for variable expense
+    B. Stop guessing capacity
+    C. Go global in minutes
+    D. Increase speed and agility
+    **Answer: C**
 
-11. [E][SA] Which best explains why AWS is more economical for spiky workloads?
-    A. Billed only monthly
-    B. Always run max instances for safety
-    C. Launch on-demand and scale with usage
-    D. Requires multi-year commitments
+18. What is Amazon Web Services (AWS)?
+    A. A physical hardware vendor.
+    B. A secure cloud platform offering a broad set of global cloud-based products.
+    C. A software licensing company.
+    D. A consulting firm for on-premises data centers.
+    **Answer: B**
 
-Answer: C
+19. In the context of AWS, what are services like Amazon EC2 and Amazon S3 considered?
+    A. Deployment models
+    B. Building blocks for solutions
+    C. Capital expenses
+    D. CAF Perspectives
+    **Answer: B**
 
-12. [M][SA] Which EC2 pricing model has the lowest typical cost but can be interrupted?
-    A. On-Demand
-    B. Savings Plans
-    C. Reserved Instances
-    D. Spot Instances
+20. What are the three ways to interact with AWS services?
+    A. Email, Phone Support, and In-Person
+    B. AWS Management Console, AWS CLI, and SDKs
+    C. Physical Kiosk, Web Portal, and Mobile App
+    D. API, GUI, and IDE
+    **Answer: B**
 
-Answer: D
+21. Which interaction method provides a rich graphical interface to a majority of the features offered by AWS?
+    A. AWS CLI
+    B. SDKs
+    C. REST-like API
+    D. AWS Management Console
+    **Answer: D**
 
-13. [M][SA] What is the key benefit of per-second billing on EC2?
-    A. Eliminates data transfer fees
-    B. Reduces payment frequency
-    C. Reduces cost for workloads that don’t use full minutes
-    D. Guarantees instance capacity
+22. A developer wants to manage AWS services from a command script in Linux or Windows. Which tool should they use?
+    A. AWS Management Console
+    B. AWS Command Line Interface (AWS CLI)
+    C. Software Development Kits (SDKs)
+    D. AWS Cloud Adoption Framework (AWS CAF)
+    **Answer: B**
 
-Answer: C
+23. What is the purpose of the AWS Cloud Adoption Framework (AWS CAF)?
+    A. To provide a programming language for AWS.
+    B. To help organizations design an accelerated path to successful cloud adoption.
+    C. To automatically migrate all on-premises applications to the cloud.
+    D. To offer discounts on AWS services.
+    **Answer: B**
 
-14. [M][SA] Which option guarantees capacity in a specific Availability Zone without a long-term discount?
-    A. Reserved Instances
-    B. Savings Plans
-    C. Spot Instances
-    D. Capacity Reservations
+24. The AWS CAF organizes guidance into six areas of focus called what?
+    A. Pillars
+    B. Domains
+    C. Perspectives
+    D. Capabilities
+    **Answer: C**
 
-Answer: D
+25. Which three AWS CAF perspectives focus on business capabilities?
+    A. Platform, Security, and Operations
+    B. Business, People, and Governance
+    C. Compute, Storage, and Networking
+    D. IaaS, PaaS, and SaaS
+    **Answer: B**
 
-15. [M][SA] Which option helps meet compliance and bring-your-own-license requirements tied to physical sockets?
-    A. Spot Instances
-    B. Dedicated Hosts
-    C. Savings Plans
-    D. Auto Scaling
+26. Which AWS CAF Perspective would stakeholders like HR, staffing, and people managers use to evaluate organizational structures and roles?
+    A. Business
+    B. Governance
+    C. Platform
+    D. People
+    **Answer: D**
 
-Answer: B
+27. A Chief Information Officer (CIO) wants to ensure that IT strategy aligns with business strategy to maximize the business value of IT investment. Which AWS CAF Perspective is most relevant?
+    A. Security
+    B. Governance
+    C. Operations
+    D. People
+    **Answer: B**
 
-16. [M][MS choose 2] Which statements about Auto Scaling are correct?
-    A. It only scales vertically
-    B. It can scale horizontally by adjusting instance counts
-    C. It can maintain desired capacity and health checks
-    D. It replaces the need for load balancers in all cases
+28. A solutions architect is designing the target state environment on the cloud. Which AWS CAF Perspective are they primarily working within?
+    A. Business
+    B. People
+    C. Platform
+    D. Operations
+    **Answer: C**
 
-Answers: B, C
-
-17. [M][SA] Which service would be used for object storage?
-    A. Amazon EBS
-    B. Amazon EFS
-    C. Amazon S3
-    D. AWS Backup
-
-Answer: C
-
-18. [M][SA] Which component primarily controls inbound traffic to EC2?
-    A. IAM role
-    B. Security Group
-    C. Amazon S3 bucket policy
-    D. VPC endpoint
-
-Answer: B
-
-19. [H][MS choose 3] Choose the best-cost choices for the following scenarios:
-
-- A) Interruptible, fault-tolerant analytics jobs
-- B) Predictable 24x7 steady-state workload for 3 years
-- C) Short, unpredictable spikes with no commitment
-  Options:
-
-1. Spot Instances
-2. 3-year Reserved Instances/Savings Plans
-3. On-Demand
-
-Answers: A-1, B-2, C-3
-
-20. [M][SA] Which AWS feature helps distribute traffic across multiple instances to improve availability?
-    A. Amazon Route 53 Health Checks
-    B. AWS Auto Scaling Scheduled Actions
-    C. Elastic Load Balancing
-    D. Placement Groups
-
-Answer: C
-
-## Section D: AWS Cloud Adoption Framework (CAF) — Overview
-
-21. [E][SA] How many perspectives does AWS CAF include?
-    A. 4
-    B. 5
-    C. 6
-    D. 8
-
-Answer: C
-
-22. [M][SA] Which list correctly names the six CAF perspectives?
-    A. Finance, Legal, Compliance, HR, Platform, Ops
-    B. Business, People, Governance, Platform, Security, Operations
-    C. Strategy, Architecture, Delivery, QA, Security, Operations
-    D. Business, HR, Legal, Architecture, Security, Ops
-
-Answer: B
-
-23. [M][SA] The CAF organizes guidance into:
-    A. Availability Zones
-    B. Service quotas
-    C. Perspectives and capabilities
-    D. Budgets
-
-Answer: C
-
-24. [M][SA] Which statement best describes CAF’s purpose?
-    A. It is a billing engine
-    B. It helps plan, structure, and accelerate cloud adoption across stakeholders
-    C. It is only for security compliance
-    D. It replaces all ITIL processes
-
-Answer: B
-
-## Section E: CAF — Security Perspective
-
-25. [E][SA] The primary Security perspective objective aligns to:
-    A. Faster releases only
-    B. Confidentiality, Integrity, Availability of data/workloads
-    C. Lowest possible cost only
-    D. Single sign-on only
-
-Answer: B
-
-26. [M][SA] Typical stakeholders for the Security perspective include:
-    A. Product Managers and UI Designers
-    B. CISO, Security Architects, Audit/Compliance leaders
-    C. CFO and Payroll Managers
-    D. Sales Directors
-
-Answer: B
-
-27. [M][MS choose 3] Select capabilities that belong to the Security perspective:
-    A. Identity and Access Management
-    B. Threat Detection
-    C. Release and Change Management
-    D. Incident Response
-    E. IT Service Catalog
-
-Answers: A, B, D
-
-28. [M][SA] Which best represents “Security governance”?
-    A. Minimizing cloud bills
-    B. Defining roles, policies, and accountability for security
-    C. Choosing instance types
-    D. Creating CI/CD pipelines
-
-Answer: B
-
-29. [M][SA] Which best describes “Security assurance”?
-    A. Scaling EC2 when CPU is high
-    B. Monitoring and improving the effectiveness of security and privacy programs
-    C. Managing S3 lifecycle policies
-    D. Configuring Route 53 health checks
-
-Answer: B
-
-30. [M][SA] Which capability focuses on detecting misconfigurations and threats?
-    A. Incident response
-    B. Threat detection
-    C. Data protection
-    D. Application security
-
-Answer: B
-
-31. [M][SA] Which capability focuses on securing data at rest and in transit, and controlling access?
-    A. Data protection
-    B. Infrastructure protection
-    C. Vulnerability management
-    D. Application security
-
-Answer: A
-
-32. [M][SA] Which capability focuses on handling and learning from security events?
-    A. Incident response
-    B. Threat detection
+29. Ensuring that the organization meets its objectives for visibility, auditability, and control is the responsibility of which AWS CAF Perspective?
+    A. Platform
+    B. Security
     C. Governance
-    D. Application security
+    D. Business
+    **Answer: B**
 
-Answer: A
+30. IT operations managers defining how day-to-day business is conducted would use which AWS CAF perspective?
+    A. Operations
+    B. Security
+    C. Platform
+    D. People
+    **Answer: A**
 
-33. [H][MS choose 2] An organization wants to embed security into development to find issues early. Which capabilities align?
-    A. Application security
-    B. Vulnerability management
-    C. Release management
-    D. IT service catalog
+31. Which of the following are examples of the Infrastructure as a Service (IaaS) model? (Select TWO)
+    A. Web-based email client
+    B. Access to virtual computers and data storage space
+    C. A completed software product that a provider runs and manages
+    D. Access to networking features
+    **Answer: B, D**
 
-Answers: A, B
+32. What are the key characteristics of cloud computing? (Select THREE)
+    A. On-demand delivery
+    B. Long-term contracts required
+    C. Pay-as-you-go pricing
+    D. Resources delivered via the internet
+    **Answer: A, C, D**
 
-34. [H][SA] A policy requiring annual risk assessment and documented security roles belongs to:
-    A. Security governance
-    B. Incident response
-    C. Operations governance
-    D. Platform engineering
+33. Which of the following are considered advantages of cloud computing according to the module? (Select THREE)
+    A. Fixed capacity
+    B. Increased speed and agility
+    C. Trading variable expense for capital expense
+    D. Ability to go global in minutes
+    E. Benefit from massive economies of scale
+    **Answer: B, D, E**
 
-Answer: A
+34. Which AWS CAF Perspectives focus on technical capabilities? (Select THREE)
+    A. Business
+    B. Platform
+    C. People
+    D. Security
+    E. Operations
+    **Answer: B, D, E**
 
-35. [H][SA] A tool that continuously evaluates AWS accounts against best practices most closely supports:
-    A. Security governance
-    B. Security assurance and threat detection
-    C. Data protection only
-    D. Release management
+35. The cloud computing model allows you to treat resources as temporary and disposable. This flexibility helps businesses in what ways? (Select TWO)
+    A. By locking them into long hardware refresh cycles.
+    B. By enabling them to implement new solutions quickly.
+    C. By requiring large upfront costs.
+    D. By lowering the cost and time to experiment.
+    **Answer: B, D**
 
-Answer: B
+36. An on-premises deployment model is also known as a:
+    A. Public Cloud
+    B. Hybrid Cloud
+    C. Community Cloud
+    D. Private Cloud
+    **Answer: D**
 
-## Section F: CAF — Operations Perspective
+37. Which AWS service category would include services like virtual servers and running code without managing servers?
+    A. Storage
+    B. Database
+    C. Compute
+    D. Networking
+    **Answer: C**
 
-36. [E][SA] Primary stakeholders in Operations perspective include:
-    A. IT operations and IT support managers
-    B. CISO and audit leads
-    C. CFO and controller
-    D. Product marketing managers
+38. The traditional computing model requires you to provision capacity by guessing theoretical maximum peaks. What are the potential negative outcomes of this approach? (Select TWO)
+    A. Paying for expensive resources that stay idle.
+    B. Always having the perfect amount of capacity.
+    C. Not having sufficient capacity if you exceed projections.
+    D. The ability to scale instantly without cost.
+    **Answer: A, C**
 
-Answer: A
+39. What does it mean to think of infrastructure "as software"?
+    A. Infrastructure is physical and requires staff and security.
+    B. Infrastructure is flexible, can be provisioned on-demand, and changed quickly.
+    C. Infrastructure requires a long procurement cycle.
+    D. Infrastructure is a one-time capital expenditure.
+    **Answer: B**
 
-37. [M][SA] The Operations perspective focuses on:
-    A. Building IAM policies only
-    B. Day-to-day, quarter-to-quarter, and year-to-year operations
-    C. Defining tax strategy
-    D. Writing application code only
+40. Which service is analogous to on-premises servers in the AWS cloud?
+    A. Amazon S3
+    B. Elastic Load Balancing
+    C. Amazon EC2 instances
+    D. Amazon VPC
+    **Answer: C**
 
-Answer: B
+41. What is the fundamental building block of the AWS Cloud Adoption Framework?
+    A. Services
+    B. Accounts
+    C. Perspectives
+    D. Regions
+    **Answer: C**
 
-38. [M][MS choose 3] Which are Operations perspective capabilities?
-    A. Service monitoring
-    B. Application performance monitoring
-    C. Data protection only
-    D. Business continuity/Disaster recovery
-    E. Incident response only
+42. Which stakeholder is primarily associated with the Business Perspective in the AWS CAF?
+    A. Solutions Architect
+    B. IT Security Manager
+    C. Finance Manager
+    D. Human Resources
+    **Answer: C**
 
-Answers: A, B, D
+43. Which tool allows you to create and manage AWS resources using various programming languages like Python or Java?
+    A. AWS Management Console
+    B. AWS CLI
+    C. Software Development Kits (SDKs)
+    D. AWS Billing Dashboard
+    **Answer: C**
 
-39. [M][SA] “Release and change management” belongs to:
-    A. Security perspective
-    B. Operations perspective
-    C. Business perspective
-    D. Governance perspective
+44. A company is using a service where they do not have to think about how the service is maintained or how the underlying infrastructure is managed. This is an example of:
+    A. IaaS
+    B. PaaS
+    C. SaaS
+    D. On-premises
+    **Answer: C**
 
-Answer: B
+45. Which of the following are cloud deployment models? (Select TWO)
+    A. SaaS
+    B. Hybrid
+    C. IaaS
+    D. On-premises
+    **Answer: B, D**
 
-40. [H][SA] A centralized catalog offering approved images and request workflows aligns to:
-    A. IT service catalog (Operations perspective)
-    B. Identity and access management (Security)
-    C. Data protection (Security)
-    D. Security governance (Security)
+46. Capital expenses (capex) are associated with which computing model?
+    A. Cloud computing
+    B. Traditional computing
+    C. Serverless computing
+    D. Pay-as-you-go
+    **Answer: B**
 
-Answer: A
+47. In AWS, billing for services becomes what type of expense?
+    A. Capital expense
+    B. Operational expense
+    C. Fixed expense
+    D. Sunk cost
+    **Answer: B**
 
-41. [H][MS choose 2] A team needs to restore operations after a Regional outage and report KPIs weekly. Which Operations capabilities are most relevant?
-    A. Business continuity/DR
-    B. Reporting and analytics
-    C. Application security
-    D. Identity and access management
+48. All parts of a cloud-based application run in the cloud. This describes which deployment model?
+    A. Hybrid
+    B. On-premises
+    C. Cloud
+    D. Private
+    **Answer: C**
 
-Answers: A, B
+49. What is a "web service" in a general computing context?
+    A. A physical server connected to the internet.
+    B. Any piece of software that makes itself available over the internet.
+    C. A user-facing website.
+    D. A subscription to an online application.
+    **Answer: B**
 
-## Section G: Mixed CAF Mapping
+50. What is a key benefit of using a software-based approach to infrastructure in the cloud?
+    A. It can only be changed with significant effort and cost.
+    B. It can be changed much more quickly, easily, and cost-effectively.
+    C. It requires more staff to manage.
+    D. It is less flexible than hardware.
+    **Answer: B**
 
-42. [M][SA] Mapping: “Define policies, roles, and responsibilities” corresponds to:
-    A. Security governance
-    B. Service monitoring
-    C. Release management
-    D. Data protection
+51. The AWS CAF helps organizations build a comprehensive approach to cloud computing across the organization and throughout the:
+    A. Fiscal year
+    B. IT lifecycle
+    C. Business quarter
+    D. Hardware procurement cycle
+    **Answer: B**
 
-Answer: A
+52. An organization's cloud adoption journey is unique, but successful migration requires alignment of which three elements?
+    A. People, Process, and Technology
+    B. Hardware, Software, and Networking
+    C. Cost, Speed, and Security
+    D. IaaS, PaaS, and SaaS
+    **Answer: A**
 
-43. [M][SA] Mapping: “Mean-time-to-recover reporting and trend analysis” corresponds to:
-    A. Reporting and analytics (Operations)
-    B. Incident response (Security)
-    C. Application security (Security)
-    D. Threat detection (Security)
+53. Which of the following would NOT be considered an advantage of cloud computing?
+    A. Lower variable cost than you can get on your own.
+    B. Access to as much or as little capacity as you need.
+    C. Needing to spend money on running and maintaining data centers.
+    D. Deploying applications in multiple regions with a few clicks.
+    **Answer: C**
 
-Answer: A
+54. The core concept behind "pay-as-you-go" pricing is:
+    A. Paying a fixed monthly fee.
+    B. Paying only for the resources you consume.
+    C. Paying for a year of service upfront.
+    D. Paying for hardware and software licenses.
+    **Answer: B**
 
-44. [H][MS choose 2] Mapping: “Detect misconfigurations” and “Remediate vulnerabilities” correspond to:
-    A. Threat detection and vulnerability management (Security)
-    B. Data protection and IR (Security)
-    C. Service monitoring and BC/DR (Operations)
-    D. Release management and IT service catalog (Operations)
+55. In the cloud model, what does AWS own?
+    A. The applications you build.
+    B. The data you store.
+    C. The server computers your resources run on.
+    D. Your intellectual property.
+    **Answer: C**
 
-Answer: A
+56. Which of the following statements about the cloud is TRUE?
+    A. It enables you to focus more on undifferentiated work like procurement and maintenance.
+    B. It enables you to focus on what matters most to your business.
+    C. It increases the time it takes to develop and experiment.
+    D. It requires significant upfront costs to get started.
+    **Answer: B**
 
-45. [H][SA] Mapping: “Runbooks for failover, RTO/RPO targets, and DR tests” correspond to:
-    A. Business continuity/DR (Operations)
-    B. Incident response (Security)
-    C. Security governance
-    D. Platform perspective
+57. AWS services fall under different **\_\_**, and each contains one or more services.
+    A. Categories
+    B. Models
+    C. Perspectives
+    D. Regions
+    **Answer: A**
 
-Answer: A
+58. What does "undifferentiated work" refer to in the context of IT?
+    A. Core business logic and application features.
+    B. Tasks like procurement, maintenance, and capacity planning.
+    C. Developing new products for customers.
+    D. Innovating in your specific industry.
+    **Answer: B**
 
-## Section H: Knowledge-Check Style (From Module Themes)
+59. Which two AWS services are analogous to traditional networking components like routers and switches? (Select TWO)
+    A. Amazon EC2
+    B. Elastic Load Balancing
+    C. Amazon S3
+    D. Amazon VPC
+    **Answer: B, D**
 
-46. [E][SA] Why is AWS more economical than traditional data centers for varying compute workloads?
-    A. EC2 is billed monthly
-    B. Users retain root access
-    C. EC2 can be launched on-demand when needed
-    D. Always run for peak
+60. The AWS Cloud Adoption Framework (CAF) provides guidance and best practices to help organizations identify gaps in what?
+    A. Hardware and software
+    B. Skills and processes
+    C. Network bandwidth
+    D. Financial capital
+    **Answer: B**
 
-Answer: C
+61. Which of the following are components of the traditional computing model? (Select THREE)
+    A. Pay-as-you-go pricing
+    B. Physical security for hardware
+    C. Capital expenditure
+    D. Staff to manage hardware
+    E. On-demand resource termination
+    **Answer: B, C, D**
 
-47. [M][SA] Which phrase signals the “Increase speed and agility” advantage?
-    A. “Provision in minutes, experiment quickly”
-    B. “Reduce chargeback disputes”
-    C. “Re-architect for microservices”
-    D. “Encrypt all data at rest”
-
-Answer: A
-
-48. [M][SA] Which one belongs to Security perspective, not Operations?
-    A. Release management
-    B. IT service catalog
-    C. Incident response
-    D. Reporting and analytics
-
-Answer: C
-
-49. [M][SA] Which one belongs to Operations perspective, not Security?
-    A. Identity and access management
-    B. Threat detection
-    C. Business continuity/DR
-    D. Data protection
-
-Answer: C
-
-50. [H][MS choose 3] Select all that are Security perspective capabilities:
-    A. Security governance
-    B. Security assurance
-    C. Application security
-    D. Release management
-    E. IT service catalog
-
-Answers: A, B, C
-
-## Section I: Scenario-Based
-
-51. [M][SA] A security team wants continuous monitoring to detect anomalous activities and misconfigurations across accounts. Which capability is primary?
-    A. Threat detection
-    B. Data protection
-    C. Application security
-    D. Release management
-
-Answer: A
-
-52. [M][SA] A company wants to ensure encryption at rest and in transit with fine-grained access control. Which capability?
-    A. Data protection
-    B. Infrastructure protection
-    C. Vulnerability management
-    D. Security governance
-
-Answer: A
-
-53. [H][SA] To validate patch levels on EC2 instances and prioritize remediation, which capability?
-    A. Vulnerability management
-    B. Application security
-    C. Threat detection
-    D. Incident response
-
-Answer: A
-
-54. [H][MS choose 2] A production outage requires communication plans, forensic collection, and post-incident reviews. Which capabilities?
-    A. Incident response
-    B. Security governance
-    C. Application performance monitoring
-    D. Business continuity/DR
-
-Answers: A, D
-
-55. [H][SA] A team needs automated deployments with approvals, change windows, and rollback plans. Which capability?
-    A. Release and change management (Operations)
-    B. Application security (Security)
-    C. Identity and access management (Security)
-    D. Data protection (Security)
-
-Answer: A
-
-## Section J: Rapid Recall (Flash)
-
-56. [E][SA] Number of CAF perspectives:
-    A. 4
-    B. 6
-    C. 8
-    D. 10
-
-Answer: B
-
-57. [E][SA] Stakeholders for Operations perspective:
-    A. IT operations/support managers
-    B. CISO/audit leaders
-    C. Sales leaders
-    D. HR managers
-
-Answer: A
-
-58. [E][SA] Security capability that handles code scanning/SAST/DAST integration:
-    A. Application security
-    B. Incident response
-    C. Data protection
-    D. Threat detection
-
-Answer: A
-
-59. [M][SA] Security capability that emphasizes program evaluation and improvement:
-    A. Security assurance
-    B. Security governance
-    C. Threat detection
-    D. Infrastructure protection
-
-Answer: A
-
-60. [M][SA] Operations capability that catalogs approved services and offerings:
-    A. IT service catalog
-    B. Reporting and analytics
-    C. Service monitoring
-    D. Business continuity/DR
-
-Answer: A
+62. If you wanted to provision a new website in a traditional model, what would be the first step?
+    A. Write the website code.
+    B. Buy the hardware.
+    C. Configure a load balancer in the cloud.
+    D. Choose a cloud service provider.
+    **Answer: B**
