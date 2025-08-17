@@ -1,2 +1,3 @@
 .venv/
 pdfs/
+.DS_Store

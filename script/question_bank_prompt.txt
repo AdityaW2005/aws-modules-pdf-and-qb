@@ -77,3 +77,4 @@ Explanation: Cloud provides on-demand resources and pay-as-you-go pricing.
 
 Answer: C  
 Explanation: Elasticity matches capacity to demand patterns.
+```
