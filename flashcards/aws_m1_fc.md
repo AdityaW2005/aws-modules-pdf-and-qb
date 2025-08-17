@@ -1,7 +1,3 @@
-# AWS Module 1: Cloud Concepts Overview - Flashcards
-
-## Quick Revision Cards for AWS Cloud Fundamentals
-
 ### Q1: What is cloud computing?
 A: The on-demand delivery of compute power, database, storage, applications, and other IT resources via the internet with pay-as-you-go pricing.
 
