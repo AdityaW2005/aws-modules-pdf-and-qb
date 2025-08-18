@@ -1,4 +1,4 @@
-# AWS Modules Question Bank
+# AWS Modules PDF
 
 A comprehensive collection of multiple-choice questions (MCQs) for AWS Academy Cloud Foundations modules.
 
