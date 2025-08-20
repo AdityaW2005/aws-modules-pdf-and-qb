@@ -221,7 +221,7 @@ Explanation: AWS CAF organizes guidance into six perspectives that span people, 
     C. People  
     D. Governance
 
-Answer: B, C, E  
+Answer: B, C, D  
 Explanation: Business, People, and Governance perspectives focus on business capabilities, while Platform, Security, and Operations focus on technical capabilities.
 
 26. [M][SA] Which AWS CAF Perspective would stakeholders like HR, staffing, and people managers use to evaluate organizational structures and roles?

@@ -138,11 +138,10 @@ Explanation: Delaware North reduced provisioning time for new business units fro
     A. Server hardware costs
     B. Software licensing
     C. Facilities costs (power, cooling, space)
-    D. Marketing expenses
-    E. IT labor costs
+    D. IT labor costs
 
-Answer: A, C, E
-Explanation: TCO considerations include server costs, facilities costs (space, power, cooling), and IT labor costs. Software licensing is also important but marketing expenses are not part of TCO.
+Answer: A, B, C  
+Explanation: TCO considerations include server costs, software licensing, and facilities costs (space, power, cooling). IT labor costs should also be included, but marketing expenses are not part of TCO calculations.
 
 17. [E][SA] What is AWS Organizations?
     A. A paid service for managing multiple AWS accounts
