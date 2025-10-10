@@ -41,7 +41,7 @@ Your task is to generate a **comprehensive AWS question bank** in **Markdown for
 
 4. **Coverage Depth**
 
-   * Preferably generate **100+ questions per module** (if content is large enough).
+   * Preferably generate **50+ questions per module** (if content is large enough).
    * If the module is small, still generate **as many as possible**, ensuring every corner of the content is tested.
    * Make sure there’s a good **distribution of difficulty**:
 
