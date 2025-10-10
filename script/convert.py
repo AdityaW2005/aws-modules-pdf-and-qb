@@ -221,19 +221,19 @@ def convert_pdf_to_clean_text(pdf_path, output_dir):
 
 def convert_all_pdfs():
     """
-    Convert all PDFs in the pdfs directory to clean text files
+    Convert all PDFs in the pdfs directory (including subdirectories) to clean text files
     """
     # Get script directory and set up paths
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
     pdfs_dir = project_root / "pdfs"
-    output_dir = script_dir / "text"
+    text_base_dir = script_dir / "text"
 
-    # Ensure output directory exists
-    output_dir.mkdir(exist_ok=True)
+    # Ensure base text directory exists
+    text_base_dir.mkdir(exist_ok=True)
 
-    # Find all PDF files
-    pdf_files = list(pdfs_dir.glob("*.pdf"))
+    # Find all PDF files recursively, including subdirectories
+    pdf_files = list(pdfs_dir.glob("**/*.pdf"))
 
     if not pdf_files:
         print(f"❌ No PDF files found in {pdfs_dir}")
@@ -242,7 +242,7 @@ def convert_all_pdfs():
     print("🚀 AWS Academy PDF to Clean Text Converter")
     print("=" * 60)
     print(f"📁 Source: {pdfs_dir}")
-    print(f"📁 Output: {output_dir}")
+    print(f"📁 Output: {text_base_dir}")
     print(f"📄 Found {len(pdf_files)} PDF file(s)")
     print("=" * 60)
 
@@ -250,7 +250,19 @@ def convert_all_pdfs():
     failed = 0
 
     for pdf_file in pdf_files:
-        if convert_pdf_to_clean_text(pdf_file, output_dir):
+        # Determine the relative path from pdfs_dir
+        relative_path = pdf_file.relative_to(pdfs_dir)
+
+        # Create corresponding output directory structure
+        if relative_path.parent != Path("."):
+            # PDF is in a subdirectory (e.g., 128930, 128932)
+            output_subdir = text_base_dir / relative_path.parent
+            output_subdir.mkdir(parents=True, exist_ok=True)
+        else:
+            # PDF is directly in pdfs folder
+            output_subdir = text_base_dir
+
+        if convert_pdf_to_clean_text(pdf_file, output_subdir):
             successful += 1
         else:
             failed += 1
@@ -260,7 +272,7 @@ def convert_all_pdfs():
     print(f"📊 Conversion Summary:")
     print(f"   ✅ Successful: {successful}")
     print(f"   ❌ Failed: {failed}")
-    print(f"   📁 Output directory: {output_dir}")
+    print(f"   📁 Output directory: {text_base_dir}")
 
     if successful > 0:
         print(f"\n🎯 Ready for LLM Question Generation!")
