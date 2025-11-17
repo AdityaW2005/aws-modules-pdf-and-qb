@@ -1,12 +1,3 @@
-# AWS Module 8: Databases - Question Bank
-
-## Overview
-This question bank covers Amazon RDS, Amazon DynamoDB, Amazon Redshift, and Amazon Aurora with comprehensive questions from the module content and extended AWS database concepts.
-
----
-
-## Questions
-
 1. [E][SA] What is Amazon RDS?
    A. A serverless compute service
    B. A managed service that sets up and operates a relational database in the cloud
@@ -916,12 +907,14 @@ Explanation: A content management system with complex relationships benefits fro
 ## Summary
 
 This question bank contains 100 comprehensive questions covering:
+
 - **Amazon RDS**: Managed relational databases, Multi-AZ, read replicas, pricing
 - **Amazon DynamoDB**: NoSQL databases, partitioning, scaling, use cases
 - **Amazon Redshift**: Data warehousing, columnar storage, analytics
 - **Amazon Aurora**: High availability, crash recovery, compatibility
 
 **Distribution:**
+
 - Easy: 50 questions (50%)
 - Medium: 35 questions (35%)
 - Hard: 15 questions (15%)

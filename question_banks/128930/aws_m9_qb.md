@@ -1,13 +1,3 @@
-# AWS Module 9: Cloud Architecture - Question Bank
-
-## Overview
-
-This question bank covers the AWS Well-Architected Framework pillars (operational excellence, security, reliability, performance efficiency, cost optimization), key design principles, reliability vs. availability concepts, influencing factors (fault tolerance, scalability, recoverability), and AWS Trusted Advisor categories and recommendations.
-
----
-
-## Questions
-
 1. [E][SA] What is the primary purpose of the AWS Well-Architected Framework?  
    A. Provide pricing calculators for AWS services  
    B. Offer a guide and consistent approach to design secure, high-performing, resilient, and efficient architectures  
