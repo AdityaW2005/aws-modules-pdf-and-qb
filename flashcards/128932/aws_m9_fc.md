@@ -277,3 +277,171 @@ A: Use S3 VPC endpoints (Gateway/Interface) with bucket and endpoint policies to
 ### Q70: What is the lab focus for this module?
 
 A: Building auth with Amazon Cognito and encrypting data at rest using KMS-integrated services.
+
+### Q71: What is an IAM managed policy?
+
+A: A standalone, reusable policy object you can attach to multiple users, groups, or roles.
+
+### Q72: What is an IAM inline policy best used for?
+
+A: One-off, principal-specific permissions that should be tightly coupled and deleted with the principal.
+
+### Q73: What does the IAM Policy Simulator help you do?
+
+A: Test and validate effective permissions by evaluating policies before applying them.
+
+### Q74: What information does a credential report provide?
+
+A: Account-wide IAM user credential age, status, MFA usage, and rotation details.
+
+### Q75: What does IAM Access Advisor show for a role?
+
+A: Services the role last accessed and when, to help remove unused permissions.
+
+### Q76: What is the difference between a role trust policy and role permissions policy?
+
+A: Trust (assume role) defines who can assume; permissions define allowed actions once assumed.
+
+### Q77: What is sts:GetCallerIdentity used for?
+
+A: Returns the AWS account, ARN, and user/role ID of current credentials to verify caller identity.
+
+### Q78: What is an ExternalId in a role trust policy?
+
+A: A condition value preventing confused deputy attacks in third‑party cross-account access.
+
+### Q79: What is the maximum benefit of short session durations for roles?
+
+A: Limits exposure window if temporary credentials are compromised.
+
+### Q80: What does aws:MultiFactorAuthPresent condition enforce?
+
+A: Requires MFA to be used for the action or role assumption.
+
+### Q81: What is IAM PassRole?
+
+A: Allowing a principal to specify an IAM role for a service (like ECS or CloudFormation) to assume on its behalf.
+
+### Q82: How do you restrict PassRole misuse?
+
+A: Allow iam:PassRole only on specific ARNs with conditions (e.g., aws:ResourceTag) and least privilege.
+
+### Q83: What is a permission boundary’s core purpose?
+
+A: Caps the maximum effective permissions the principal’s policies can grant.
+
+### Q84: What is AWS Access Analyzer?
+
+A: A tool that finds unintended external access by analyzing resource policies for broad principals.
+
+### Q85: What is encryption context in KMS?
+
+A: Non-secret key‑value metadata bound to ciphertext for integrity and additional access constraints.
+
+### Q86: What does kms:GenerateDataKey return?
+
+A: A plaintext data key and its encrypted version for local envelope encryption.
+
+### Q87: Difference between Encrypt and GenerateDataKey in KMS?
+
+A: Encrypt protects supplied plaintext; GenerateDataKey creates a new data key for your encryption use.
+
+### Q88: What is a KMS key alias?
+
+A: A friendly name mapping to a key ID for easier key reference and rotation abstraction.
+
+### Q89: What does scheduling KMS key deletion do?
+
+A: Places a pending deletion window (7–30 days) before the key is irreversibly removed.
+
+### Q90: What is the safer alternative to deleting a KMS key immediately?
+
+A: Disable the key temporarily to halt use while retaining potential recovery.
+
+### Q91: What is CloudHSM?
+
+A: A managed hardware security module cluster for controlling and storing your own encryption keys.
+
+### Q92: When to choose CloudHSM over KMS?
+
+A: When you need single-tenant FIPS 140-2 Level 3 control or custom cryptographic algorithms.
+
+### Q93: What is KMS key rotation benefit?
+
+A: Limits the amount of data encrypted under a single key version improving crypto hygiene and audit separation.
+
+### Q94: What is Secrets Manager automatic rotation?
+
+A: Scheduled Lambda-driven workflow to rotate supported secrets (e.g., RDS creds) transparently.
+
+### Q95: What is Macie primarily used for?
+
+A: Discovering and classifying sensitive data (PII) in S3 using ML.
+
+### Q96: What does Amazon Inspector scan?
+
+A: EC2, container images (ECR), and Lambda for software vulnerabilities and exposure.
+
+### Q97: What is AWS WAF’s main function?
+
+A: Filter, block, or allow web requests based on rules to mitigate common exploits.
+
+### Q98: What added value does Shield Advanced provide?
+
+A: Enhanced DDoS detection, mitigation, cost protection, and 24/7 DRT access.
+
+### Q99: What is the benefit of centralized org trails in CloudTrail?
+
+A: Uniform logging, easier aggregation, and consistent security/audit controls across accounts.
+
+### Q100: What is a Service Control Policy guardrail example?
+
+A: Denying cloudtrail:StopLogging to ensure audit logging cannot be disabled.
+
+### Q101: What is delegated administrator in Organizations?
+
+A: Assigning specific accounts to manage certain AWS services centrally instead of the management account.
+
+### Q102: What is the risk of broad "Principal": "\*" in resource policies?
+
+A: Potential unintended public or cross-account access if not constrained by conditions.
+
+### Q103: What is an S3 access point?
+
+A: A named network endpoint with its own policy providing fine-grained access to a shared bucket.
+
+### Q104: Why use VPC endpoint policies?
+
+A: Restrict which principals and services can traverse the endpoint to reach AWS services.
+
+### Q105: What is cross-account data exfiltration mitigation for roles?
+
+A: Restrictive trust policies + SCP denies for unknown account patterns + Access Analyzer alerts.
+
+### Q106: What does session tagging enable?
+
+A: Passing tags in AssumeRole to apply ABAC conditions during the session.
+
+### Q107: What is a common KMS throughput consideration?
+
+A: High-volume encryption should use data keys locally; minimize direct Encrypt calls to avoid throttling.
+
+### Q108: What is a best practice for STS usage scale?
+
+A: Reuse short-lived credentials for session duration instead of excessive AssumeRole churn.
+
+### Q109: What are Cognito advanced security features?
+
+A: Adaptive authentication, compromised credential checks, and risk-based MFA challenges.
+
+### Q110: What is Cognito identity pool role mapping?
+
+A: Assigning different IAM roles based on user attributes/groups for fine-grained AWS access.
+
+### Q111: What is the purpose of validating JWT token signatures client-side?
+
+A: Ensures tokens are authentic and untampered before granting access or invoking privileged calls.
+
+### Q112: What is the advantage of short-lived access and refresh tokens in Cognito?
+
+A: Reduces exposure window and limits damage if tokens are intercepted.
