@@ -492,3 +492,480 @@ Explanation: GuardDuty analyzes CloudTrail, VPC Flow Logs, and DNS logs to detec
 
 Answer: B
 Explanation: Secrets Manager manages, rotates, and audits secrets with fine-grained IAM control.
+
+56. [E][SA] What is an IAM inline policy?
+    A. A managed policy you can attach to many principals
+    B. A policy embedded directly in a single principal (user/role/group)
+    C. A resource policy on S3
+    D. A CloudFormation stack policy
+
+Answer: B
+Explanation: Inline policies exist only within one IAM principal; deletion of the principal removes the policy.
+
+57. [E][SA] What does sts:AssumeRole return?
+    A. Long-term access keys
+    B. Temporary access key, secret key, and session token
+    C. Only a secret key
+    D. A KMS data key
+
+Answer: B
+Explanation: STS returns short-lived credentials composed of access key ID, secret key, and session token.
+
+58. [E][SA] Which statement about MFA delete on S3 is correct?
+    A. Enables multi-factor auth for deleting objects only in Glacier
+    B. Requires MFA for versioned object delete/disable operations in versioning-enabled buckets
+    C. Works for unversioned buckets by default
+    D. Is configured in IAM only
+
+Answer: B
+Explanation: MFA delete protects versioned object delete and versioning state changes.
+
+59. [E][SA] What is the primary purpose of the aws:SourceIp condition?
+    A. Restrict access by VPC ID
+    B. Restrict requests to specific CIDR/IP ranges
+    C. Encrypt requests
+    D. Enable MFA
+
+Answer: B
+Explanation: aws:SourceIp enforces IP-based access control in policies.
+
+60. [E][SA] What is a Cognito hosted UI?
+    A. A custom domain management console
+    B. Pre-built authentication pages for user pools (sign-in, sign-up, MFA)
+    C. An S3 static hosting alternative
+    D. A CloudFront distribution template
+
+Answer: B
+Explanation: Hosted UI accelerates auth integration with configurable branding and flows.
+
+61. [E][SA] What is the difference between access token and ID token in Cognito?
+    A. Access token contains user claims for authorizing API calls; ID token contains identity profile claims
+    B. They are identical
+    C. ID token is for API authorization; access token for identity
+    D. Neither carries user claims
+
+Answer: A
+Explanation: Access token authorizes resource access; ID token conveys identity details (name/email/etc.).
+
+62. [E][SA] What is the simplest way to deny KMS usage from outside AWS Org?
+    A. SCP only
+    B. Key policy condition with aws:PrincipalOrgID matching your org ID
+    C. IAM permission boundary
+    D. VPC endpoint policy
+
+Answer: B
+Explanation: Key policies can restrict principals by Organization membership with aws:PrincipalOrgID.
+
+63. [E][SA] Which service centralizes workforce SSO access to accounts/apps?
+    A. IAM users
+    B. IAM Identity Center
+    C. Cognito identity pools
+    D. STS only
+
+Answer: B
+Explanation: Identity Center provides SSO with permission sets mapped to account roles.
+
+64. [E][SA] What is a KMS multi-Region key?
+    A. A key shared publicly across all accounts
+    B. A set of related keys replicated across Regions for encryption portability and disaster recovery
+    C. A Lambda function
+    D. An HSM cluster key only
+
+Answer: B
+Explanation: Multi-Region keys allow encrypt in one Region, decrypt in another (with replicated keys).
+
+65. [M][SA] Why use permission boundaries for delegated admin users?
+    A. To replace resource policies
+    B. To cap the maximum permissions they can grant themselves or others
+    C. To enable MFA globally
+    D. To encrypt API calls
+
+Answer: B
+Explanation: Permission boundaries prevent privilege escalation beyond approved scope.
+
+66. [M][SA] Which condition enforces that a role can only be assumed from a specific account?
+    A. aws:SourceIp
+    B. aws:PrincipalArn
+    C. sts:ExternalId + trusting principal's account ID in trust policy
+    D. aws:RequestedRegion
+
+Answer: C
+Explanation: Trust policy lists principal account ID; ExternalId adds extra validation for third-party scenarios.
+
+67. [M][SA] What is the risk of overly broad KMS key policies ("\*" principals)?
+    A. Improved security
+    B. Potential unintended access if combined with permissive IAM policies
+    C. Mandatory MFA enforcement
+    D. Automatic rotation disabled
+
+Answer: B
+Explanation: Broad principals widen the attack surface for misuse.
+
+68. [M][MS] Which two help implement ABAC for EC2 tag-based access? (Choose 2)
+    A. Require matching resource and principal tags in IAM conditions
+    B. Use aws:ResourceTag and aws:PrincipalTag condition keys
+    C. Use only bucket policies
+    D. Rely solely on SCPs
+
+Answer: A, B
+Explanation: ABAC policies evaluate tag equality/conditions for fine-grained control.
+
+69. [M][SA] Which Cognito user pool feature reduces password theft risk?
+    A. Plaintext storage
+    B. Adaptive authentication and MFA
+    C. Disabled password policies
+    D. No secret hash
+
+Answer: B
+Explanation: Adaptive auth applies risk-based challenges like MFA.
+
+70. [M][SA] How to audit cross-account role assumptions centrally?
+    A. Disable CloudTrail
+    B. Enable CloudTrail in each account or organization trail capturing AssumeRole events
+    C. Use Config only
+    D. Use X-Ray
+
+Answer: B
+Explanation: CloudTrail records STS calls including AssumeRole for auditing.
+
+71. [M][SA] What does GuardDuty analyze for threat detection?
+    A. Only EC2 metrics
+    B. CloudTrail, VPC Flow Logs, DNS logs, optional EKS audit logs
+    C. RDS queries
+    D. Lambda logs only
+
+Answer: B
+Explanation: GuardDuty uses multiple telemetry sources to detect suspicious activity.
+
+72. [M][SA] When should you prefer grants over key policy edits?
+    A. For long-term wide access
+    B. For precise, revocable, scoped permissions without altering broad key policy
+    C. To disable rotation
+    D. To tag keys
+
+Answer: B
+Explanation: Grants allow temporary or granular permissions quickly revocable.
+
+73. [M][MS] Which two strengthen federated access via SAML? (Choose 2)
+    A. Short session duration
+    B. Enforce MFA at IdP before role assumption
+    C. Use access keys
+    D. Store assertions long-term
+
+Answer: A, B
+Explanation: Short sessions limit exposure; MFA increases assurance.
+
+74. [M][SA] What is the benefit of using organization SCP deny lists for "\*" actions?
+    A. They grant admin rights
+    B. They block high-risk actions (e.g., disabling CloudTrail) across all accounts
+    C. They encrypt data
+    D. They replace IAM
+
+Answer: B
+Explanation: Deny-list SCPs remove risky operations while leaving other permissions unaffected.
+
+75. [M][SA] Why restrict AssumeRole calls with source IP conditions cautiously?
+    A. IP-based conditions can break legitimate federated flows or NAT-based access
+    B. They always increase security without side effects
+    C. They enforce TLS
+    D. They rotate keys
+
+Answer: A
+Explanation: STS calls may originate from variable IPs; overly strict filters can cause outages.
+
+76. [M][SA] What is identity-based ABAC scalability advantage?
+    A. Fewer policies needed as new resources adopt tags and rules still apply
+    B. Requires per-resource policy updates
+    C. Eliminates need for tags
+    D. Works only for S3
+
+Answer: A
+Explanation: Tag-based policies auto-apply as tagged resources emerge.
+
+77. [M][SA] Which Secrets Manager feature simplifies rotation logic?
+    A. Static plaintext storage
+    B. Built-in Lambda rotation templates
+    C. Inline policies
+    D. SCP integration
+
+Answer: B
+Explanation: Templates quick-start rotation functions for common engines.
+
+78. [M][MS] Which two help ensure least privilege in IAM roles? (Choose 2)
+    A. Scope actions/resources narrowly
+    B. Remove unused permissions via access advisor/CloudTrail analysis
+    C. Use broad admin policies for convenience
+    D. Avoid monitoring
+
+Answer: A, B
+Explanation: Minimization and pruning reduce attack surface.
+
+79. [H][SA] You need to prevent privilege escalation by attaching broader policies. Strategy?
+    A. Ignore permission boundaries
+    B. Apply permission boundaries + governance via SCPs restricting iam:Put\*Policy actions
+    C. Allow wildcard policies
+    D. Share root credentials
+
+Answer: B
+Explanation: Boundaries cap maximum privileges; SCPs prevent unauthorized policy modifications.
+
+80. [H][SA] An external vendor needs KMS encryption in your account without broader access. Approach?
+    A. Add to key policy with kms:\* and no conditions
+    B. Create a dedicated role with constrained IAM; use a grant for specific key operations
+    C. Share your root keys
+    D. Enable public access
+
+Answer: B
+Explanation: Role + grant provides scoped, revocable access.
+
+81. [H][MS] Which two mitigate risks of compromised temporary credentials? (Choose 2)
+    A. Short session durations
+    B. Use of MFA on role assumption
+    C. Very long-lived tokens
+    D. Disable CloudTrail
+
+Answer: A, B
+Explanation: Limited lifetime and MFA reduce impact and difficulty of misuse.
+
+82. [H][SA] Data must be encrypted cross-Region with minimal latency. Solution?
+    A. Single regional key only
+    B. Multi-Region KMS keys with replication and local decrypt
+    C. Custom RSA keys in EC2 only
+    D. SSE-S3 only
+
+Answer: B
+Explanation: Replicated multi-Region keys support local encrypt/decrypt operations across Regions.
+
+83. [H][SA] Detect unauthorized changes to IAM policies quickly. Approach?
+    A. Disable CloudTrail
+    B. CloudTrail + EventBridge rule on iam:CreatePolicy/iam:Put\* + SNS/Lambda alerting
+    C. Rely on monthly audits
+    D. Use X-Ray
+
+Answer: B
+Explanation: Event-driven alerts provide near-real-time detection.
+
+84. [H][SA] Minimize impact if GuardDuty finds suspicious credential use. Immediate step?
+    A. Ignore finding
+    B. Automate quarantine via EventBridge + Lambda to disable or revoke keys
+    C. Delete CloudTrail
+    D. Share credentials externally
+
+Answer: B
+Explanation: Automated response reduces dwell time and limits damage.
+
+85. [H][MS] Which two help secure Cognito tokens in single-page apps? (Choose 2)
+    A. Store tokens in memory (avoid long-term local storage) when feasible
+    B. Use short TTLs and refresh tokens with scoped claims
+    C. Hardcode tokens
+    D. Disable HTTPS
+
+Answer: A, B
+Explanation: Memory storage and short-lived tokens reduce exposure window.
+
+86. [H][SA] Need granular per-request encryption of form fields at edge + centralized key control. Use?
+    A. Public bucket
+    B. CloudFront field-level encryption + KMS key for target app decrypt
+    C. SSE-S3 only
+    D. Parameter Store plaintext
+
+Answer: B
+Explanation: Field-level encryption secures selected fields end-to-end with KMS-managed keys.
+
+87. [H][SA] Prevent accidental disabling of CloudTrail across accounts. Control?
+    A. IAM policy only
+    B. SCP denying cloudtrail:StopLogging and cloudtrail:DeleteTrail
+    C. Remove CloudTrail trails
+    D. Use S3 block public access
+
+Answer: B
+Explanation: SCP deny prevents principals from turning off auditing.
+
+88. [H][SA] Ensure only CI/CD role can modify IAM while developers read. Approach?
+    A. Everyone gets AdministratorAccess
+    B. Separate roles: read-only developer role; CI/CD role with iam:\* limited by permission boundary
+    C. Use root user daily
+    D. Disable IAM logging
+
+Answer: B
+Explanation: Role separation enforces least privilege and controlled modifications.
+
+89. [H][MS] Which two protect against cross-account data exfiltration via misconfigured roles? (Choose 2)
+    A. Restrictive trust policies limiting principals
+    B. SCP deny on sts:AssumeRole for unknown principals patterns
+    C. Broad "\*" trust policy
+    D. Long session durations
+
+Answer: A, B
+Explanation: Tight trust + org guardrails prevent unauthorized assumptions.
+
+90. [H][SA] Rapid key revocation requirement for compromised KMS grant. Action?
+    A. Delete key
+    B. Retire or revoke the specific grant via RevokeGrant
+    C. Disable CloudTrail
+    D. Wait for rotation
+
+Answer: B
+Explanation: Revoking the grant immediately stops its permissions without broader impact.
+
+91. [H][SA] Need tenant-isolated encryption but shared infrastructure. Pattern?
+    A. Single shared key for all tenants
+    B. Per-tenant KMS keys with tagging and key policy scoping
+    C. Plaintext storage
+    D. Shared root access
+
+Answer: B
+Explanation: Separate keys improve isolation and auditability per tenant.
+
+92. [H][MS] Which two reduce blast radius if an access key leaks? (Choose 2)
+    A. Least-privilege scope on key’s user
+    B. Automated rotation and disable upon anomaly detection
+    C. Attach AdministratorAccess
+    D. Ignore GuardDuty findings
+
+Answer: A, B
+Explanation: Limited permissions + rotation/automated response shrink exposure.
+
+93. [H][SA] Guarantee immediate revocation of all sessions after user offboarding. Approach?
+    A. Wait for TTL
+    B. Invalidate Cognito refresh tokens, revoke Identity Center sessions, remove IAM access keys and active roles
+    C. Do nothing
+    D. Delete CloudTrail logs
+
+Answer: B
+Explanation: Explicit revocation plus credential removal ensures access termination.
+
+94. [H][SA] Enforce conditional access only from corporate network and with MFA. Design?
+    A. Identity policy with aws:SourceIp and aws:MultiFactorAuthPresent conditions
+    B. SCP only
+    C. Key policy only
+    D. Route 53 policy
+
+Answer: A
+Explanation: Combine IP and MFA conditions for layered assurance.
+
+95. [H][SA] Multi-account logging strategy for KMS and IAM events. Recommendation?
+    A. No org trail
+    B. Organization CloudTrail trail + centralized S3 + CloudWatch Logs forward + Athena queries
+    C. Per-account S3 bucket only
+    D. Manual downloads
+
+Answer: B
+Explanation: Central org trail simplifies aggregation, query, and monitoring.
+
+96. [H][SA] Detect when a role is assumed unusually often. Method?
+    A. Ignore metric data
+    B. CloudTrail events -> EventBridge -> Lambda counting assumptions -> alarm when threshold exceeded
+    C. Secrets Manager
+    D. S3 lifecycle
+
+Answer: B
+Explanation: Event-driven counting surfaces anomalies in role usage.
+
+97. [H][SA] Secure third-party SaaS with cross-account role assumption. Must-have?
+    A. Broad trust of "\*"
+    B. ExternalId in trust policy to prevent confused deputy attacks
+    C. Root access
+    D. Long session duration only
+
+Answer: B
+Explanation: ExternalId distinguishes legitimate calls from unauthorized assumption attempts.
+
+98. [H][MS] Which two support forensics on key misuse? (Choose 2)
+    A. CloudTrail logging for kms:\* API calls
+    B. Detailed key policies with limited principals
+    C. Disable logging
+    D. Share credentials
+
+Answer: A, B
+Explanation: Audit trails plus scoped policies help investigation and containment.
+
+99. [H][SA] Need to ensure only tagged resources environment=prod are modifiable by prod-admin role. Policy concept?
+    A. ACLs only
+    B. Tag-based ABAC with aws:ResourceTag/environment condition
+    C. CloudFront functions
+    D. Route 53 tags
+
+Answer: B
+Explanation: Tag conditions enforce environment scoping for actions.
+
+100. [H][SA] Ensure private S3 logs cannot be exfiltrated cross-account. Control?
+     A. Public bucket ACLs
+     B. Bucket policy restricting access to your Org + VPC endpoint conditions
+     C. Disable encryption
+     D. Broad trust
+
+Answer: B
+Explanation: Org ID + VPC endpoint scoping prevents external principal access.
+
+101. [H][SA] Minimize keys while supporting many services encryption. Approach?
+     A. Unique key per object only
+     B. Use a small set of customer managed keys with key policies granting least privilege and data keys via envelope encryption
+     C. Plaintext storage
+     D. Broad AdminAccess
+
+Answer: B
+Explanation: Envelope encryption allows data keys; fewer CMKs reduce management complexity.
+
+102. [H][SA] Rapid detection of S3 bucket public policy changes. Mechanism?
+     A. Monthly review
+     B. CloudTrail event + EventBridge rule on PutBucketPolicy evaluating public statements
+     C. Disable versioning
+     D. Share root credentials
+
+Answer: B
+Explanation: Real-time event evaluation prevents prolonged exposure.
+
+103. [H][MS] Which two reduce attack surface for IAM users still required? (Choose 2)
+     A. Enforce MFA
+     B. Rotate and minimize access keys; prefer roles when possible
+     C. Provide admin rights by default
+     D. Store keys in code repos
+
+Answer: A, B
+Explanation: MFA + limited, rotated keys mitigate compromise risk.
+
+104. [H][SA] Maintain consistent tagging for ABAC at scale. Tooling?
+     A. Manual spreadsheets
+     B. Tag policies in Organizations with conformance checks
+     C. Disable tagging
+     D. Random tags
+
+Answer: B
+Explanation: Tag policies enforce naming standards ensuring ABAC reliability.
+
+105. [H][SA] Detect unusual KMS Decrypt spike after hours. Approach?
+     A. Ignore metrics
+     B. CloudWatch metric filter on CloudTrail logs -> alarm with anomaly detection
+     C. Disable CloudTrail
+     D. Remove key policy
+
+Answer: B
+Explanation: Derived metric with anomaly detection identifies off-hours spikes.
+
+106. [H][SA] Restrict IAM changes to a designated pipeline role only. Control?
+     A. SCP deny iam:_ except pipeline role via condition (NotPrincipal) or allow list strategy
+     B. Grant everyone iam:_ access
+     C. Disable logging
+     D. Use root daily
+
+Answer: A
+Explanation: SCP strategy ensures only authorized role can perform IAM changes.
+
+107. [H][SA] Provide temporary cross-account S3 access for a data share with least risk. Method?
+     A. Share access keys
+     B. Create restricted role in target account; Source account assumes; bucket policy trusts role; optional ExternalId
+     C. Public bucket
+     D. Disable versioning
+
+Answer: B
+Explanation: Role assumption gives auditable, expiring access; bucket policy controls scope.
+
+108. [H][SA] Centralize secrets management for multi-account microservices. Pattern?
+     A. Store secrets in code
+     B. Use Secrets Manager multi-account rotation with shared services account and IAM roles granting retrieve least privilege
+     C. Plaintext env vars
+     D. EBS volume notes
+
+Answer: B
+Explanation: Central secrets + scoped roles reduce duplication and improve governance.
