@@ -201,3 +201,223 @@ A: Playbook outlines scenarios and decision trees; runbook gives step-by-step pr
 ### Q50: What is data sovereignty consideration in DR?
 
 A: Ensure replication and failover comply with regional data residency regulations.
+
+### Q51: What is Route 53 ARC routing control?
+
+A: A controlled switch to shift traffic between Regions with safety rules and readiness checks.
+
+### Q52: What are safety rules in ARC?
+
+A: Guardrails (for example, one-Region-at-a-time) to prevent unsafe global failovers.
+
+### Q53: What is a Regional vs zonal failure?
+
+A: Zonal affects one AZ; Regional impacts all AZs in a Region—multi-Region mitigates Regional failures.
+
+### Q54: What is Aurora Global Database RPO/RTO profile?
+
+A: Low-second RPO with fast (minute-scale) cross-Region failover.
+
+### Q55: How do DynamoDB global tables handle conflicts?
+
+A: Last writer wins (timestamp-based) conflict resolution across Regions.
+
+### Q56: What is S3 Multi-Region Access Points (MRAP)?
+
+A: A global endpoint that routes S3 requests to the nearest/healthiest Region.
+
+### Q57: What is EventBridge global endpoints failover?
+
+A: Routes events to a secondary Region when primary health checks fail.
+
+### Q58: What is AWS Backup cross-Region copy?
+
+A: Policy-driven backup copies to another Region for DR and compliance.
+
+### Q59: What is Backup Vault Lock for?
+
+A: Enforce WORM retention to prevent tampering or deletion of backups.
+
+### Q60: What is pilot light for databases?
+
+A: Keep minimal replicas/resources (for example, read replica) to scale up during DR.
+
+### Q61: What is warm standby for stateless apps?
+
+A: Run reduced-capacity stacks in secondary Region and scale on failover.
+
+### Q62: What is active/active write strategy?
+
+A: Partition writes by Region or use conflict-tolerant stores; avoid cross-Region synchronous writes.
+
+### Q63: What is health-check based failover?
+
+A: Route 53/Global Accelerator evaluate endpoints and shift traffic when primary is unhealthy.
+
+### Q64: What is EFS cross-Region replication RPO?
+
+A: Asynchronous; usually minutes, depending on change rate and network.
+
+### Q65: What is FSx for ONTAP SnapMirror in DR?
+
+A: Native replication to another Region for fast file system failover.
+
+### Q66: What is DRS cutover vs test drill?
+
+A: Cutover is real failover; test drill launches isolated tests without impacting prod.
+
+### Q67: What is an RTO/RPO test?
+
+A: An exercise measuring actual restore time and data loss against targets.
+
+### Q68: What is IaC’s role in pilot light?
+
+A: Rapidly stand up full stacks from templates (CloudFormation/Terraform) during DR.
+
+### Q69: What are golden AMIs for DR?
+
+A: Pre-patched, hardened images to accelerate rebuilds in secondary Regions.
+
+### Q70: What is SSM Automation’s role in DR?
+
+A: Execute repeatable recovery runbooks (for example, scale up, swap endpoints) safely.
+
+### Q71: What is DNS TTL tuning for DR?
+
+A: Lower TTL on critical records to speed propagation during failover.
+
+### Q72: What is Global Accelerator health check advantage?
+
+A: Faster, network-layer health checks and static anycast IPs for quick rerouting.
+
+### Q73: What is cross-Region KMS key strategy?
+
+A: Use multi-Region keys or replicate key material/policies aligned with DR plans.
+
+### Q74: What is stateful session DR mitigation?
+
+A: Externalize session/state (for example, DynamoDB/ElastiCache global) or make sessions stateless.
+
+### Q75: What is blue/green for DR?
+
+A: Maintain two environments and switch traffic (ARC/Route 53) to green during recovery.
+
+### Q76: What is data seeding?
+
+A: Pre-populating secondary Region with baseline datasets to reduce RTO/RPO.
+
+### Q77: What is failback?
+
+A: Returning service to primary Region after stabilization and data reconciliation.
+
+### Q78: What is cross-Region VPC design consideration?
+
+A: Mirror CIDRs, endpoints, and security controls to enable parity and automation.
+
+### Q79: What is Aurora global write forwarding?
+
+A: Read replicas forward writes to the primary Region to simplify app logic pre-failover.
+
+### Q80: What is Route 53 health check dependency risk?
+
+A: If checks rely on impacted components, failover might not trigger—use independent paths.
+
+### Q81: What’s the role of chaos engineering (FIS) in DR?
+
+A: Proactively validate failure modes, automation, and runbooks to reduce surprises.
+
+### Q82: What is multi-Region CI/CD artifact strategy?
+
+A: Replicate artifacts and container images (for example, ECR replication) to secondary Regions.
+
+### Q83: What are DR communication plans?
+
+A: Defined stakeholders, escalation paths, and status templates during incidents.
+
+### Q84: What is Recovery Readiness scoring?
+
+A: ARC provides checks to assess readiness across routing, recovery, and safety rules.
+
+### Q85: What is cross-Region CloudWatch metric/alarms strategy?
+
+A: Replicate critical alarms or use cross-account dashboards to monitor secondary Region.
+
+### Q86: What is automated DB failover validation?
+
+A: Run drills to validate replica promotion, connection strings, and app recovery.
+
+### Q87: What is Lambda multi-Region strategy?
+
+A: Deploy in multiple Regions, replicate event sources/state, and use global routing.
+
+### Q88: What is S3 replication time control (RTC)?
+
+A: SLA-backed option for predictable CRR replication times.
+
+### Q89: What is DynamoDB backup strategy for DR?
+
+A: Enable PITR and scheduled backups with cross-Region copy.
+
+### Q90: What is ACM certificate consideration in DR?
+
+A: Certificates are Regional; provision in each Region or use wildcard SANs as needed.
+
+### Q91: What is WAF configuration in multi-Region?
+
+A: Replicate WebACLs across Regions or use centralized managed rules mirrored to both.
+
+### Q92: What is EKS multi-Region pattern?
+
+A: Run active clusters per Region; use GitOps and global routing for failover.
+
+### Q93: What is RPO-sensitive messaging DR pattern?
+
+A: Use global event buses or cross-Region replication (for example, SQS with DLQ, Kinesis multi-Region).
+
+### Q94: What is secret rotation in DR?
+
+A: Replicate secrets and rotation workflows in secondary Region to avoid delays.
+
+### Q95: What is immutable backup principle?
+
+A: Backups cannot be altered (for example, Vault Lock, Object Lock) to resist ransomware.
+
+### Q96: What is traffic ramp-up during failover?
+
+A: Gradually increase weight to secondary Region to monitor stability.
+
+### Q97: What is data reconciliation post-failback?
+
+A: Resolve drift/conflicts accumulated during multi-Region operation.
+
+### Q98: What is alarm-based scaling in DR?
+
+A: Trigger scale-out in secondary Region based on health/traffic metrics.
+
+### Q99: What are DR cost controls?
+
+A: Choose strategy (pilot/warm), automate scale only on failover, and archive backups cost-effectively.
+
+### Q100: What is tabletop DR exercise?
+
+A: Scenario walkthrough without executing changes to validate plans and roles.
+
+### Q101: What is pre-provisioned capacity in DR?
+
+A: Keeping reserved/baseline capacity ready in secondary Region to meet RTO.
+
+### Q102: What is global network design for DR?
+
+A: Multi-Region VPCs, interconnects (TGW/peering), and consistent route/security policies.
+
+### Q103: What is S3 Glacier Vault Lock in DR?
+
+A: Enforce compliance retention policies for archives to prevent tampering.
+
+### Q104: What is AMI/Container image parity?
+
+A: Ensure identical versions exist in both Regions to avoid drift during recovery.
+
+### Q105: What is DR readiness review cadence?
+
+A: Regular scheduled reviews (for example, quarterly) to update runbooks, tests, and dependencies.

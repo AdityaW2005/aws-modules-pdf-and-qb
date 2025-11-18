@@ -201,3 +201,275 @@ A: Transition/compliance rules to move data between storage classes or expire ob
 ### Q50: What is the medallion architecture?
 
 A: Bronze (raw), Silver (clean), Gold (curated) layers representing data refinement stages.
+
+### Q51: What is schema-on-read?
+
+A: Deferring schema application until query time; common in data lakes with semi-structured data.
+
+### Q52: What is schema-on-write?
+
+A: Enforcing schema at ingest/write time; typical for data warehouses.
+
+### Q53: What is Glue partition projection?
+
+A: Define partition patterns without storing them in the catalog to speed up queries and reduce crawls.
+
+### Q54: What is Amazon Redshift RA3 benefit?
+
+A: Managed storage separates compute and storage, enabling scaling independently and querying S3 via Spectrum.
+
+### Q55: What is a lakehouse?
+
+A: Architecture combining data lake flexibility with warehouse management/features (governance, ACID, performance).
+
+### Q56: Why convert JSON/CSV to Parquet?
+
+A: Reduce scan size and improve performance through columnar storage and compression.
+
+### Q57: What is Glue Data Quality used for?
+
+A: Define rulesets to validate data (for example, null checks, ranges) and gate pipelines.
+
+### Q58: What is MSK Connect?
+
+A: Managed Kafka Connect for building source/sink connectors for MSK topics.
+
+### Q59: What is Kinesis shard splitting/merging?
+
+A: Operations to scale stream throughput up/down by changing shard count.
+
+### Q60: What are common S3 data lake encryption options?
+
+A: SSE-S3, SSE-KMS, and client-side encryption with KMS-managed keys.
+
+### Q61: What is Lake Formation tag-based access control (TBAC)?
+
+A: Grant permissions based on data tags to simplify fine-grained governance.
+
+### Q62: What is a Glue job bookmark?
+
+A: A checkpoint that tracks last processed data to support incremental ETL.
+
+### Q63: What is Athena CTAS?
+
+A: CREATE TABLE AS SELECT; writes query results to S3 and creates a new table.
+
+### Q64: What is Redshift materialized view?
+
+A: A precomputed query result that can be refreshed for faster performance.
+
+### Q65: What is compaction in streaming sinks?
+
+A: Periodic merging of many small files into larger Parquet files for efficiency.
+
+### Q66: What is Flink event time vs processing time?
+
+A: Event time is when the event occurred; processing time is when the system processed it.
+
+### Q67: What is a watermark in Flink?
+
+A: A threshold that indicates lateness and drives window firing with late data handling.
+
+### Q68: What is Glue DynamicFrame?
+
+A: A schema-flexible abstraction in Glue ETL built on Spark DataFrames, easing semi-structured transforms.
+
+### Q69: What is Athena workgroup use?
+
+A: Isolate queries, enforce settings, budgets, and output locations per team or workload.
+
+### Q70: What is Redshift Spectrum external schema?
+
+A: A schema mapped to Glue Catalog tables over S3 for external data access from Redshift.
+
+### Q71: What is EMR managed scaling?
+
+A: Automatically adjusts cluster size based on metrics and target utilization.
+
+### Q72: What is Iceberg/Hudi/Delta in lakes?
+
+A: Table formats enabling ACID transactions, time travel, and schema evolution on S3.
+
+### Q73: What is time travel in table formats?
+
+A: Query historical snapshots of data for auditing or rollback.
+
+### Q74: What is AppFlow used for?
+
+A: Managed data ingestion from SaaS apps into AWS services with mappings and filtering.
+
+### Q75: What is EMR Serverless good for?
+
+A: Running Spark/Hive jobs without managing clusters, ideal for sporadic/elastic ETL.
+
+### Q76: What is Kinesis EFO (enhanced fan-out)?
+
+A: Per-consumer dedicated throughput and lower-latency reads with HTTP/2.
+
+### Q77: What is Kinesis extended retention for streams?
+
+A: Retain records beyond 24 hours (up to 7 days or more with long-term retention) for reprocessing.
+
+### Q78: What is Glue connection?
+
+A: Network/credential config to reach data sources (JDBC, on-prem) from Glue jobs.
+
+### Q79: What is Redshift copy from S3?
+
+A: High-throughput bulk load into Redshift from S3 with parallelism.
+
+### Q80: What is partition evolution?
+
+A: Changing partition schemes over time; ensure readers handle multiple patterns.
+
+### Q81: What is Athena partition projection benefit?
+
+A: Avoids listing millions of prefixes; speeds up planning and removes need for frequent crawls.
+
+### Q82: What is EMRFS consistent view?
+
+A: A metadata consistency layer for S3 object listings for EMR clusters.
+
+### Q83: What is Glue job worker type?
+
+A: Predefined compute profiles (for example, G.1X, G.2X) controlling vCPU/memory for jobs.
+
+### Q84: What is redshift-super data type used for?
+
+A: Semi-structured data (JSON) processing with PartiQL in Redshift.
+
+### Q85: What is Athena federated query?
+
+A: Query data across sources via connectors (for example, RDS, DynamoDB) without moving data.
+
+### Q86: What is Z-ordering (conceptually) in analytics tables?
+
+A: Multi-dimensional clustering to improve locality of related values and reduce scanned data.
+
+### Q87: What is Glue interactive sessions?
+
+A: On-demand interactive development notebooks backed by Glue for authoring and testing ETL code.
+
+### Q88: What is MSK vs Kinesis key difference?
+
+A: MSK provides Kafka compatibility and ecosystem; Kinesis is AWS-native with managed shards.
+
+### Q89: What is late data handling in streaming?
+
+A: Using allowed lateness and side outputs to process events arriving after window close.
+
+### Q90: What is S3 requester pays?
+
+A: Bucket owners shift data transfer/cost to requesters (useful for shared datasets).
+
+### Q91: What is Lake Formation cross-account sharing?
+
+A: Governed sharing of Data Catalog resources (databases/tables) across accounts.
+
+### Q92: What is Glue Studio visual job?
+
+A: Drag-and-drop graph to specify sources, transforms, and sinks executed as Glue ETL.
+
+### Q93: What is partition pruning?
+
+A: Skipping non-relevant partitions at query time to reduce scanned data.
+
+### Q94: What is Redshift UNLOAD?
+
+A: Export data from Redshift tables to S3 in parallel, often to Parquet.
+
+### Q95: What is a CDC pipeline?
+
+A: Capture data changes from sources (for example, database logs) and stream them to targets for near-real-time sync.
+
+### Q96: What are Glue bookmarks limitations?
+
+A: Depend on stable paths/markers; significant structure changes may require reset or custom tracking.
+
+### Q97: What is the small files problem?
+
+A: Many tiny objects cause high overhead and slow queries; compaction mitigates it.
+
+### Q98: What is Kinesis scaling on hot partitions?
+
+A: Use partition key design and increase shards to distribute load evenly.
+
+### Q99: What is a data contract?
+
+A: An agreed schema and SLA between producers and consumers to prevent breaking changes.
+
+### Q100: What is Glue schema registry compatibility mode?
+
+A: Rules like backward/forward compatibility to control schema evolution safety.
+
+### Q101: What is Athena spill to S3?
+
+A: Temporary storage for intermediate results when memory is insufficient, impacting performance.
+
+### Q102: What is EMR notebooks?
+
+A: Managed Jupyter notebooks integrated with EMR clusters for interactive analytics.
+
+### Q103: What is dynamic partition overwrite?
+
+A: Write-only affected partitions when overwriting data to reduce unnecessary I/O.
+
+### Q104: What is Glue job retry strategy?
+
+A: Configure retries and backoff for resilient ETL runs on transient failures.
+
+### Q105: What is Redshift concurrency scaling?
+
+A: Automatically adds transient clusters to handle bursts of concurrent queries.
+
+### Q106: What is Amazon OpenSearch ingestion options?
+
+A: Firehose, Logstash, Data Prepper, or custom ingestion pipelines.
+
+### Q107: What is deduplication in streaming sinks?
+
+A: Using idempotent keys or state to avoid double writes when retries occur.
+
+### Q108: What is Glue job parameterization?
+
+A: Pass key/value params to reuse job logic across datasets/environments.
+
+### Q109: What is state store in Flink?
+
+A: Managed state (for example, RocksDB) backing operators for exactly-once semantics.
+
+### Q110: What is Kinesis aggregation/deaggregation?
+
+A: Combine records client-side to reduce PUTs, then split on consumers.
+
+### Q111: What is data lineage?
+
+A: Tracking data origins, transformations, and usage for governance and debugging.
+
+### Q112: What is Redshift Spectrum partition projection?
+
+A: Define partition structure in external tables to avoid loading all partitions.
+
+### Q113: What is Glue Python shell job?
+
+A: Lightweight job type for Python scripts that don’t require Spark.
+
+### Q114: What is S3 Object Lock?
+
+A: WORM retention to prevent deletion/overwrite for compliance.
+
+### Q115: What is cost control in Athena?
+
+A: Limit scan size via partitioning, Parquet, filters, workgroup limits, and query review.
+
+### Q116: What is MSK cluster security baseline?
+
+A: TLS in transit, client auth (mTLS/SASL), private networking, and least-privilege IAM.
+
+### Q117: What is Glue bookmark vs watermark in streaming?
+
+A: Bookmarks track file/process offsets; watermarks track event-time progress for lateness.
+
+### Q118: What is a curated zone?
+
+A: Cleaned, standardized data ready for analytics/consumption with governed schemas.

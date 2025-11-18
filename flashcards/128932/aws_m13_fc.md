@@ -201,3 +201,203 @@ A: Create platform applications/endpoints (APNS, FCM) and subscribe them to topi
 ### Q50: When should you choose choreography over orchestration?
 
 A: Prefer choreography (events) for loosely coupled, scalable systems; use orchestration when you need centralized control/visibility.
+
+### Q51: What is the SQS maximum message size?
+
+A: 256 KB per message body; use the SQS Extended Client with S3 for larger payloads.
+
+### Q52: How many messages can SQS return per ReceiveMessage call?
+
+A: Up to 10 messages per call when using batch receive.
+
+### Q53: What is the maximum SQS visibility timeout?
+
+A: Up to 12 hours per message.
+
+### Q54: Where do you configure SQS long polling?
+
+A: At the queue level (ReceiveMessageWaitTimeSeconds) or per request in ReceiveMessage.
+
+### Q55: What are SQS message attributes used for?
+
+A: To carry typed metadata (for example, strings, numbers) alongside the body, often used for filtering with SNS or routing.
+
+### Q56: Does SQS support message prioritization?
+
+A: Not natively; use separate queues or Amazon MQ if you require priorities.
+
+### Q57: What is the SQS receipt handle?
+
+A: A token returned on receive that must be provided to delete or change the visibility of the message.
+
+### Q58: What is EventBridge event bus vs rule?
+
+A: An event bus receives events; rules match event patterns on a bus and route matched events to targets.
+
+### Q59: What is EventBridge archive and replay?
+
+A: You can archive events from a bus and later replay them to reprocess historical events.
+
+### Q60: What are EventBridge API destinations?
+
+A: Managed outbound calls to external HTTP endpoints with reusable connections and auth.
+
+### Q61: What is EventBridge Pipes?
+
+A: Point-to-point integration between sources and targets with filtering, enrichment, and transformation.
+
+### Q62: What’s SNS raw message delivery to SQS?
+
+A: Delivers the original payload to SQS without the SNS JSON envelope (Message, Subject, etc.).
+
+### Q63: Does SNS have DLQs?
+
+A: SNS retries deliveries; for SQS subscribers use SQS DLQs; for HTTP/S you can configure retries and failure handling. Some SNS subscription types support redrive policies to SQS.
+
+### Q64: How do you control who can publish to an SNS topic?
+
+A: Use a topic resource policy with conditions (for example, aws:SourceArn, aws:SourceAccount) and IAM.
+
+### Q65: How do you allow cross-account SQS to subscribe to an SNS topic?
+
+A: Add an SNS topic policy permitting the other account to publish/subscribe and an SQS queue policy allowing the topic to send.
+
+### Q66: What is a common pattern for large payloads with queues?
+
+A: Claim check: store payloads in S3 and pass object keys via the message.
+
+### Q67: What is a redrive to source queue?
+
+A: A feature to move messages from a DLQ back to the original queue for reprocessing.
+
+### Q68: How do you enforce idempotency in consumers?
+
+A: Use idempotency keys and conditional writes (for example, DynamoDB Put with a condition that the key does not exist).
+
+### Q69: What is a safe retry strategy for transient errors?
+
+A: Exponential backoff with jitter and circuit breaking when downstreams are unhealthy.
+
+### Q70: What is the difference between EventBridge and SNS filtering?
+
+A: SNS filters on message attributes at subscription; EventBridge matches on event JSON with rich pattern operators.
+
+### Q71: What is an EventBridge partner event source?
+
+A: A SaaS integration that can put events onto your event bus using a partner-defined schema.
+
+### Q72: What is an EventBridge connection?
+
+A: Stores auth details (for example, API key, OAuth) reused by API destinations.
+
+### Q73: When to choose Amazon MQ over SQS/SNS?
+
+A: When you need broker semantics like message priorities, transactions, and specific protocols (AMQP, MQTT, JMS).
+
+### Q74: What is a durable subscription (broker-based)?
+
+A: A subscription that stores messages for offline consumers (for example, JMS durable subscribers in ActiveMQ).
+
+### Q75: What is the transactional outbox benefit?
+
+A: Ensures reliable event publication aligned with database commits, avoiding dual-write inconsistencies.
+
+### Q76: How do message group IDs enable parallelism in FIFO?
+
+A: Messages with different group IDs can be processed in parallel while preserving order within each group.
+
+### Q77: What is SQS content-based deduplication?
+
+A: FIFO queues can hash the message body to derive a dedupe ID automatically.
+
+### Q78: What’s a typical cause of “ghost” retries in SQS?
+
+A: Visibility timeout shorter than processing time causing messages to reappear before delete.
+
+### Q79: How do you monitor SQS backlogs effectively?
+
+A: Track AgeOfOldestMessage and ApproximateNumberOfMessagesVisible, alerting when thresholds breach.
+
+### Q80: How do you protect SQS with KMS?
+
+A: Enable SSE-KMS and ensure KMS key policies and IAM allow encrypt/decrypt for producers/consumers.
+
+### Q81: What is the typical batch size for Lambda + SQS?
+
+A: Up to 10 messages per batch (configurable); choose based on payload and processing time.
+
+### Q82: What is a fanout-and-filter design?
+
+A: Publish once to SNS then use subscription filters so each consumer gets only relevant messages.
+
+### Q83: When do you use EventBridge over SNS for SaaS integration?
+
+A: When you need managed partner integrations, schema registry, archives, replay, and complex routing.
+
+### Q84: Can EventBridge invoke Step Functions directly?
+
+A: Yes, via targets; Step Functions can be triggered without a Lambda shim.
+
+### Q85: How do you limit who can send to an SQS queue?
+
+A: Use queue policies with conditions and IAM; for private access use VPC endpoints and endpoint policies.
+
+### Q86: What’s a common poison message remediation?
+
+A: Send to DLQ, analyze root cause, fix consumers, then redrive messages back when safe.
+
+### Q87: What is dead-letter queue vs on-failure destination?
+
+A: DLQ stores failed items for later; destinations (for example, Lambda) forward success/failure events for processing.
+
+### Q88: What are EventBridge replays useful for?
+
+A: Recovering from downstream outages by replaying missed events once systems are restored.
+
+### Q89: Can SNS deliver to Lambda across accounts?
+
+A: Yes; configure the Lambda resource policy to allow SNS from the publisher account and the SNS topic policy accordingly.
+
+### Q90: What is message filtering with prefixes in EventBridge?
+
+A: Use prefix operators in pattern matching to route events based on field prefixes.
+
+### Q91: How do you avoid tight coupling in message schemas?
+
+A: Use versioned, backwards-compatible schemas and avoid consumer-specific fields in core events.
+
+### Q92: What is the claim-check vs reference data pattern?
+
+A: Claim-check stores large payloads in external storage; reference data fetches auxiliary data during processing (for enrichment).
+
+### Q93: What are common SQS API costs drivers?
+
+A: Number of requests (Send/Receive/Delete/ChangeVisibility) and payload size when using S3 via extended client.
+
+### Q94: How can you reduce SQS costs for idle queues?
+
+A: Use long polling and avoid frequent empty receives.
+
+### Q95: What is the purpose of an SQS access policy condition on aws:SourceArn?
+
+A: To restrict sends to a specific SNS topic or source service for defense in depth.
+
+### Q96: How do you handle schema evolution safely in event systems?
+
+A: Use additive, backward-compatible changes and version fields; validate with schemas.
+
+### Q97: What is a choreography anti-pattern to avoid?
+
+A: Orchestrating complex business logic via chained SNS notifications; use Step Functions for centralized flows.
+
+### Q98: How do you throttle consumers gracefully?
+
+A: Implement rate limiting, smaller batch sizes, and backoff in clients; use reserved concurrency for Lambda.
+
+### Q99: What are EventBridge input transformers?
+
+A: Lightweight JSON remapping/templating to reshape events before sending to targets.
+
+### Q100: How do you secure EventBridge cross-account targets?
+
+A: Use resource policies on event buses/targets and restrict with conditions (SourceAccount/SourceArn); apply least privilege.

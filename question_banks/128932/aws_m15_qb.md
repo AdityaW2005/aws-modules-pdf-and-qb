@@ -447,3 +447,525 @@ Explanation: Athena over Parquet is ideal for large-scale ad hoc log analytics.
 
 Answer: A
 Explanation: Firehose supports inline Lambda transforms and durable delivery to S3.
+
+51. [E][SA] Which Glue component stores table schemas used by Athena?
+    A. Glue Data Catalog
+    B. Glue Jobs
+    C. Glue Triggers
+    D. Glue Studio
+
+Answer: A
+Explanation: The Glue Data Catalog is the central metadata store for tables/databases.
+
+52. [E][SA] Which format usually scans the fewest bytes for analytics?
+    A. CSV
+    B. JSON
+    C. Parquet
+    D. TSV
+
+Answer: C
+Explanation: Columnar Parquet enables predicate pushdown and compression to minimize scans.
+
+53. [E][MS] Which are common data lake zones? (Choose two)
+    A. Raw/Landing
+    B. Curated
+    C. Route Tables
+    D. NAT Gateways
+
+Answer: A,B
+Explanation: Raw and Curated zones segment lifecycle and governance of datasets.
+
+54. [E][SA] What does Kinesis shard count primarily control?
+    A. Dashboard widgets
+    B. Stream throughput and parallelism
+    C. VPC bandwidth
+    D. EC2 limits
+
+Answer: B
+Explanation: Shards set write/read capacity and consumer parallelism.
+
+55. [E][SA] What’s the benefit of Enhanced Fan-Out in Kinesis?
+    A. Lower storage costs
+    B. Dedicated throughput per consumer
+    C. Fewer shards needed always
+    D. Replaces partition keys
+
+Answer: B
+Explanation: EFO provides per-consumer throughput and reduces contention.
+
+56. [E][SA] Which Redshift node type decouples compute and storage?
+    A. DS2
+    B. RA3
+    C. DC2
+    D. T3
+
+Answer: B
+Explanation: RA3 with managed storage separates compute from storage capacity.
+
+57. [E][SA] What does Glue bookmark do?
+    A. Creates IAM roles
+    B. Tracks processed data to enable incremental ETL
+    C. Encrypts data at rest
+    D. Auto-scales Lambda
+
+Answer: B
+Explanation: Bookmarks identify new/changed data to process incrementally.
+
+58. [E][SA] Which service is best for ad hoc SQL on S3 without servers?
+    A. Amazon Athena
+    B. Amazon RDS
+    C. AWS Batch
+    D. CloudTrail Lake
+
+Answer: A
+Explanation: Athena is serverless query over S3 using Glue schemas.
+
+59. [E][SA] What is partition pruning?
+    A. Dropping tables
+    B. Skipping non-relevant partitions for faster queries
+    C. Compressing files
+    D. Archiving to Glacier
+
+Answer: B
+Explanation: Partition pruning reduces scanned data and cost.
+
+60. [E][MS] Ways to reduce Athena cost? (Choose two)
+    A. Convert to Parquet
+    B. Partition by time
+    C. Store larger uncompressed CSVs
+    D. Use many tiny files
+
+Answer: A,B
+Explanation: Columnar + partitioning minimize scanned bytes.
+
+61. [M][SA] How do you handle out-of-order events in streaming analytics?
+    A. NAT routing
+    B. Watermarks and windowing by event time
+    C. DNS failover
+    D. IAM roles
+
+Answer: B
+Explanation: Watermarks/windowing handle lateness and ordering.
+
+62. [M][SA] A consumer is falling behind in Kafka/MSK. What metric indicates this?
+    A. CPU utilization
+    B. Consumer lag
+    C. Disk IOPS
+    D. Memory swap
+
+Answer: B
+Explanation: Lag = difference between latest offset and consumer offset.
+
+63. [M][MS] Improve Kinesis consumer throughput. (Choose two)
+    A. Increase shard count
+    B. Enable enhanced fan-out
+    C. Disable retries
+    D. Single AZ only
+
+Answer: A,B
+Explanation: More shards + EFO raise capacity and reduce contention.
+
+64. [M][SA] You need governed cross-account lake access. Best choice?
+    A. Bucket ACLs only
+    B. Lake Formation resource sharing
+    C. Public buckets
+    D. VPC endpoints
+
+Answer: B
+Explanation: LF sharing governs cross-account databases/tables.
+
+65. [M][SA] What’s a common fix for the small files problem?
+    A. More partitions only
+    B. Compaction/merge and convert to Parquet
+    C. JSON only
+    D. Increase bucket limits
+
+Answer: B
+Explanation: Compaction + columnar formats reduce overhead.
+
+66. [M][SA] What does Glue Schema Registry provide?
+    A. Auto VPC creation
+    B. Schema versioning and compatibility checks
+    C. Only CSV parsing
+    D. NAT Gateway management
+
+Answer: B
+Explanation: Registry controls evolution and validates payloads.
+
+67. [M][MS] Governance patterns with Lake Formation. (Choose two)
+    A. Tag-based access control (LF-TBAC)
+    B. Fine-grained row/column permissions
+    C. Global public read permissions
+    D. Security groups on S3
+
+Answer: A,B
+Explanation: LF supports TBAC and granular permissions integrated with analytics services.
+
+68. [M][SA] Which helps join Redshift and S3 data?
+    A. Redshift Spectrum external tables
+    B. NAT Gateways
+    C. Lambda Layers
+    D. CodeDeploy
+
+Answer: A
+Explanation: Spectrum queries S3 while joining with warehouse tables.
+
+69. [M][SA] Which practice ensures exactly-once sinks in Flink?
+    A. Disable checkpoints
+    B. Checkpoints and idempotent sinks
+    C. Single-threaded only
+    D. Disable retries
+
+Answer: B
+Explanation: State + idempotency enable exactly-once delivery.
+
+70. [M][SA] Best option for near real-time ingestion to S3 with simple transforms?
+    A. Kinesis Data Firehose with Lambda transform
+    B. MSK Connect
+    C. DataSync schedule
+    D. CloudFormation custom resources
+
+Answer: A
+Explanation: Firehose simplifies delivery and supports inline Lambda.
+
+71. [M][MS] Improve Athena query performance. (Choose two)
+    A. Use Parquet/ORC
+    B. Use partition projection
+    C. Use JSON everywhere
+    D. No compression
+
+Answer: A,B
+Explanation: Columnar + projection reduce scan and speed up queries.
+
+72. [M][SA] You need serverless Spark ETL with low ops. Choose:
+    A. Glue ETL Jobs
+    B. Self-managed EMR on EC2
+    C. Containerized Spark only
+    D. On-prem Hadoop
+
+Answer: A
+Explanation: Glue ETL is serverless Spark with integrated orchestration.
+
+73. [M][SA] Which service supports SQL and Flink for stream processing?
+    A. Kinesis Data Analytics
+    B. DataBrew
+    C. AppFlow
+    D. Config
+
+Answer: A
+Explanation: KDA supports Apache Flink and SQL applications.
+
+74. [M][SA] What’s a good practice for CDC pipelines?
+    A. Ignore ordering
+    B. Use deterministic ids and schema evolution
+    C. Public S3 buckets
+    D. Disable retries
+
+Answer: B
+Explanation: Deterministic ids support idempotency; schema evolution prevents breaks.
+
+75. [M][SA] Where to store intermediate spill for large Athena joins?
+    A. S3 temporary spill
+    B. EBS on EC2
+    C. SQS
+    D. ElastiCache
+
+Answer: A
+Explanation: Athena may spill to S3 when memory is insufficient.
+
+76. [M][SA] What is data lineage used for?
+    A. Static web hosting
+    B. Tracking origins, transforms, and use for governance/debugging
+    C. Caching API responses
+    D. NAT routing
+
+Answer: B
+Explanation: Lineage is key to traceability and compliance.
+
+77. [E][SA] What is Glue Studio?
+    A. Visual builder for ETL jobs
+    B. Monitoring tool only
+    C. DNS service
+    D. IAM role editor
+
+Answer: A
+Explanation: Glue Studio provides drag-and-drop ETL authoring.
+
+78. [E][SA] What is EMR Serverless?
+    A. Serverless compute for Spark/Hive jobs
+    B. Data warehouse
+    C. Key-value store
+    D. CDN
+
+Answer: A
+Explanation: EMR Serverless runs big data jobs without managing clusters.
+
+79. [E][SA] What’s the purpose of Redshift UNLOAD?
+    A. Export Redshift data to S3
+    B. Load S3 to Redshift
+    C. Create Glue tables
+    D. Clean S3 data
+
+Answer: A
+Explanation: UNLOAD writes data in parallel from Redshift to S3, often to Parquet.
+
+80. [M][SA] How do you enforce query-level cost controls in Athena?
+    A. WLM queues
+    B. Workgroup data usage limits and query controls
+    C. EBS size limits
+    D. CloudTrail events
+
+Answer: B
+Explanation: Workgroups enforce limits and track usage.
+
+81. [M][MS] Reduce S3 small files impact. (Choose two)
+    A. Compaction jobs
+    B. Write larger target file sizes
+    C. Randomize partitions daily
+    D. Disable compression
+
+Answer: A,B
+Explanation: Fewer, larger Parquet files improve performance.
+
+82. [M][SA] Secure MSK for production baseline?
+    A. Public brokers
+    B. TLS in transit and client auth (for example, mTLS)
+    C. Open security groups
+    D. No IAM
+
+Answer: B
+Explanation: Encrypt in transit and authenticate clients; keep brokers private.
+
+83. [H][SA] Global data lake with strict tenant isolation across domains. Choice?
+    A. S3 ACLs only
+    B. Lake Formation TBAC + column/row-level permissions + cross-account sharing
+    C. Public buckets + signed URLs
+    D. NACL rules
+
+Answer: B
+Explanation: LF TBAC and fine-grained permissions govern multi-tenant access.
+
+84. [H][MS] Guarantee exactly-once delivery from Flink to S3. (Choose two)
+    A. Checkpointing with transactional sinks
+    B. Idempotent S3 keying
+    C. Disable retries
+    D. No state
+
+Answer: A,B
+Explanation: State + transactions/idempotency provide exactly-once semantics.
+
+85. [H][SA] Join lake data and warehouse tables with minimal data movement.
+    A. Redshift Spectrum external tables
+    B. Copy data into RDS
+    C. Export to CSV only
+    D. Glacier restore
+
+Answer: A
+Explanation: Spectrum queries S3 and joins with Redshift tables.
+
+86. [M][SA] Choose lake table format for ACID, schema evolution, and time travel.
+    A. Plain Parquet only
+    B. Apache Iceberg/Hudi/Delta Lake
+    C. CSV with headers
+    D. TSV
+
+Answer: B
+Explanation: Modern table formats provide ACID, evolution, and versioning.
+
+87. [M][MS] Improve Kafka consumer scalability. (Choose two)
+    A. Increase partitions
+    B. Balance keys to avoid hot partitions
+    C. One consumer only
+    D. Disable autoscaling
+
+Answer: A,B
+Explanation: More partitions + even key distribution increases throughput.
+
+88. [M][SA] Convert nested logs to analytics-ready format in S3.
+    A. Leave as JSON
+    B. Use Glue/Spark to flatten and write Parquet with partitioning
+    C. Store in EBS
+    D. Use snapshots
+
+Answer: B
+Explanation: Flattened, partitioned Parquet reduces scan cost.
+
+89. [E][SA] What is a data contract?
+    A. Informal email
+    B. Agreed schema and SLAs between producer and consumer
+    C. IAM policy
+    D. Route table
+
+Answer: B
+Explanation: Data contracts reduce breaking changes and coordinate evolution.
+
+90. [E][SA] What is S3 Object Lock?
+    A. Versioning only
+    B. WORM retention to prevent deletes/overwrites
+    C. Cost allocation tags
+    D. Lifecycle to Glacier only
+
+Answer: B
+Explanation: Object Lock enforces retention for compliance.
+
+91. [E][SA] What is Glue Python shell job best for?
+    A. Heavy Spark ETL
+    B. Lightweight Python scripts without Spark
+    C. Redshift cluster scaling
+    D. OpenSearch indexing
+
+Answer: B
+Explanation: Python shell runs small-scale scripts quickly.
+
+92. [E][MS] Where does Athena store intermediate spill? (Choose two)
+    A. S3 temp spill location
+    B. Local Lambda /tmp
+    C. Redshift local disks
+    D. Not applicable (never spills)
+
+Answer: A
+Explanation: Athena spills to S3 when memory is insufficient.
+
+93. [M][SA] How to apply row-level security across multiple tools?
+    A. IAM only
+    B. Lake Formation fine-grained permissions
+    C. Bucket ACLs
+    D. Security groups
+
+Answer: B
+Explanation: LF integrates with Athena, Redshift Spectrum, and EMR.
+
+94. [M][SA] What improves spectrum external table discovery performance?
+    A. Full partition listing
+    B. Partition projection
+    C. Disable partitions
+    D. Random keys
+
+Answer: B
+Explanation: Projection avoids enumerating all partitions.
+
+95. [M][SA] Strategy to minimize Redshift copy time from S3?
+    A. Large, compressed Parquet files
+    B. Many tiny CSV files
+    C. No compression
+    D. Single thread
+
+Answer: A
+Explanation: Fewer, larger Parquet files load faster and efficiently.
+
+96. [H][SA] Multi-tenant lake with dynamic row filtering based on user attributes.
+    A. Glue crawler filters
+    B. LF row filters with user-context and tags
+    C. S3 website redirects
+    D. NAT rules
+
+Answer: B
+Explanation: LF supports row/column permissions and tag-based policy.
+
+97. [H][MS] Hardening MSK production cluster. (Choose two)
+    A. Private networking and SG least-privilege
+    B. TLS + client authentication (mTLS/SASL)
+    C. Public brokers
+    D. Anonymous access
+
+Answer: A,B
+Explanation: Network isolation + strong auth protects Kafka clusters.
+
+98. [M][SA] Enforce per-team cost guardrails in Athena.
+    A. Shared workgroup with no limits
+    B. Separate workgroups with data usage limits and CloudWatch alerts
+    C. Route 53 failover
+    D. Security Hub only
+
+Answer: B
+Explanation: Workgroups isolate queries and enforce limits.
+
+99. [M][MS] Reduce late data drops in Flink. (Choose two)
+    A. Increase allowed lateness
+    B. Use side outputs for late arrivals
+    C. Disable watermarks
+    D. Use processing time windows only
+
+Answer: A,B
+Explanation: Allowed lateness and side outputs preserve tardy events.
+
+100. [M][SA] You need SaaS-to-S3 ingestion with mapping and filters.
+     A. AppFlow
+     B. DataSync
+     C. Glue Crawler
+     D. Route 53
+
+Answer: A
+Explanation: AppFlow moves SaaS data into S3 with transforms.
+
+101. [H][SA] Guarantee end-to-end idempotency in a stream-to-lake pipeline.
+     A. Random S3 keys
+     B. Deterministic keys and upsert semantics in the sink
+     C. Disable retries
+     D. Single-threaded writes only
+
+Answer: B
+Explanation: Deterministic keys and upserts avoid duplicates on retries.
+
+102. [H][MS] Improve Redshift concurrency for bursty BI. (Choose two)
+     A. Concurrency Scaling
+     B. Workload management (WLM) queues
+     C. Disable RA3
+     D. Single queue for all
+
+Answer: A,B
+Explanation: Concurrency Scaling adds transient clusters; WLM prioritizes workloads.
+
+103. [M][SA] Choose a lakehouse table for ACID upserts at scale.
+     A. Apache Hudi
+     B. CSV
+     C. TXT
+     D. Static HTML
+
+Answer: A
+Explanation: Hudi focuses on upsert/delete with ACID semantics on the lake.
+
+104. [E][SA] What is a curated zone?
+     A. Raw unverified data
+     B. Cleaned, standardized, analytics-ready data
+     C. Backups only
+     D. API logs
+
+Answer: B
+Explanation: Curated data is governed and ready for consumption.
+
+105. [E][SA] What is data quality validation in Glue?
+     A. Only schema inference
+     B. Rules to check constraints (for example, nulls, ranges) pre/post ETL
+     C. Only encryption
+     D. Only tagging
+
+Answer: B
+Explanation: Glue Data Quality validates datasets against defined rules.
+
+106. [E][SA] What is Athena CTAS used for?
+     A. Create tables with results written to S3
+     B. Copy data to RDS
+     C. Build EC2 AMIs
+     D. Create IAM users
+
+Answer: A
+Explanation: CTAS materializes query results as new tables in S3.
+
+107. [M][SA] How to minimize Kinesis hot partition issues?
+     A. Single static key
+     B. Distribute keys and consider partition key hashing/salting
+     C. Reduce shards
+     D. Disable retries
+
+Answer: B
+Explanation: Balanced keys distribute load across shards.
+
+108. [H][SA] Cross-account analytics with strict column-level policies and auditability.
+     A. Share S3 keys in email
+     B. Lake Formation cross-account sharing + column/row-level permissions + CloudTrail
+     C. Public bucket access for speed
+     D. VPC peering only
+
+Answer: B
+Explanation: LF governs cross-account access with fine-grained controls and auditable APIs.

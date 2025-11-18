@@ -447,3 +447,543 @@ Explanation: Strangler fig and EDA allow incremental migration.
 
 Answer: B
 Explanation: Reserved concurrency guarantees concurrency slices and prevents a function from taking all capacity.
+
+51. [E][SA] What’s the maximum Lambda timeout?
+    A. 1 minute
+    B. 5 minutes
+    C. 10 minutes
+    D. 15 minutes
+
+Answer: D
+Explanation: Lambda supports up to 15 minutes per invocation.
+
+52. [E][SA] How does Lambda CPU allocation relate to memory?
+    A. Fixed, independent of memory
+    B. Proportional to memory setting
+    C. Depends on Region only
+    D. Manual vCPU selection required
+
+Answer: B
+Explanation: CPU and network scale proportionally with the configured memory.
+
+53. [E][SA] Which API Gateway offers lowest latency and cost for simple APIs?
+    A. REST API
+    B. HTTP API
+    C. WebSocket API
+    D. SOAP API
+
+Answer: B
+Explanation: HTTP APIs are optimized for cost and latency with a simplified feature set.
+
+54. [E][SA] What is a usage plan in API Gateway?
+    A. WAF rule set
+    B. Throttling and quota configuration associated to API keys
+    C. IAM policy template
+    D. CloudFront behavior
+
+Answer: B
+Explanation: Usage plans apply rate/burst and quotas per API key.
+
+55. [E][SA] Which feature validates request bodies in REST APIs?
+    A. Gateway Responses
+    B. Models and request validators
+    C. Caching only
+    D. Stages
+
+Answer: B
+Explanation: Models + validators ensure request schema compliance.
+
+56. [E][SA] What does provisioned concurrency guarantee?
+    A. Lower cost
+    B. Pre-initialized environments for low-latency starts
+    C. Higher memory only
+    D. More retries
+
+Answer: B
+Explanation: Provisioned concurrency keeps environments warm.
+
+57. [E][SA] Where do you configure Lambda DLQ for async invokes?
+    A. In VPC settings
+    B. In function’s async configuration
+    C. In IAM role
+    D. In CloudWatch Logs
+
+Answer: B
+Explanation: Async config supports DLQ or destinations for success/failure.
+
+58. [E][MS] Which can invoke Lambda synchronously? (Choose two)
+    A. API Gateway
+    B. Application Load Balancer
+    C. S3 event notifications
+    D. EventBridge Scheduler
+
+Answer: A,B
+Explanation: API Gateway and ALB invoke synchronously; S3 is async; Scheduler uses EventBridge.
+
+59. [E][SA] Which service provides GraphQL with real-time subscriptions?
+    A. API Gateway
+    B. AppSync
+    C. SQS
+    D. CloudFront
+
+Answer: B
+Explanation: AppSync supports GraphQL queries, mutations, and subscriptions.
+
+60. [E][SA] What is a Lambda layer used for?
+    A. VPC peering
+    B. Shared libraries and code across functions
+    C. API Gateway caching
+    D. Kinesis sharding
+
+Answer: B
+Explanation: Layers package dependencies for reuse.
+
+61. [M][SA] How do you reduce P99 latency for a Lambda-backed API?
+    A. Increase timeout
+    B. Use provisioned concurrency and minimize package size
+    C. Disable retries
+    D. Move to monolith
+
+Answer: B
+Explanation: Warm environments and smaller images reduce cold-start impact.
+
+62. [M][MS] Which secure API Gateway privately? (Choose two)
+    A. Private API with VPC endpoints
+    B. Resource policies restricting source VPCs
+    C. Public IAM role
+    D. Disable TLS
+
+Answer: A,B
+Explanation: Private endpoints and resource policies keep APIs private.
+
+63. [M][SA] What is mTLS in service meshes?
+    A. DNS failover
+    B. Mutual TLS for service-to-service authentication and encryption
+    C. CloudFront TLS only
+    D. Static key exchange
+
+Answer: B
+Explanation: mTLS authenticates both client and server with certificates.
+
+64. [M][SA] You need to limit tenants to specific quotas. Feature?
+    A. Usage plans + API keys per tenant
+    B. Lambda memory
+    C. S3 ACLs
+    D. VPC endpoints only
+
+Answer: A
+Explanation: Usage plans enforce tenant-specific limits via API keys.
+
+65. [M][MS] Which are Step Functions patterns for resiliency? (Choose two)
+    A. Retry with backoff and jitter
+    B. Catch to fallback path
+    C. Disable timeouts
+    D. No state transitions
+
+Answer: A,B
+Explanation: Retries and catches implement resilient workflows.
+
+66. [M][SA] How to integrate private NLB backends with API Gateway?
+    A. Public endpoint
+    B. VPC Link integration
+    C. Lambda authorizer
+    D. CloudWatch alarms
+
+Answer: B
+Explanation: VPC Link provides private connectivity to VPC resources.
+
+67. [M][MS] Which help reduce Lambda costs at scale? (Choose two)
+    A. Right-size memory for faster compute
+    B. Use ARM/Graviton where supported
+    C. Increase timeout unnecessarily
+    D. Add heavy dependencies
+
+Answer: A,B
+Explanation: Faster compute reduces duration; ARM lowers price/perf in many cases.
+
+68. [M][SA] How can WebSocket connections be authorized?
+    A. By JWT or Lambda authorizers during $connect route
+    B. By S3 bucket policies
+    C. Only with IAM roles
+    D. Not supported
+
+Answer: A
+Explanation: Authorizers validate during $connect to control session establishment.
+
+69. [M][SA] What is Lambda event filtering on SQS/Kinesis?
+    A. VPC subnet selection
+    B. Drop non-matching records at the event source mapping
+    C. Increase memory
+    D. Caching
+
+Answer: B
+Explanation: Filtering reduces invocations and cost by pre-filtering records.
+
+70. [M][MS] Which protect APIs? (Choose two)
+    A. AWS WAF managed rules
+    B. Rate limiting and quotas
+    C. Disable logs
+    D. Open CORS to all origins by default
+
+Answer: A,B
+Explanation: WAF and throttling/quotas guard against abuse.
+
+71. [H][SA] You need zero-trust between microservices. Approach?
+    A. Flat network with public access
+    B. Service mesh with mTLS and policy
+    C. Single security group for all
+    D. Shared credentials
+
+Answer: B
+Explanation: Mesh enforces identity, encryption, and policies.
+
+72. [H][MS] Multi-Region active/active APIs require which? (Choose two)
+    A. Global data replication (for example, DynamoDB global tables)
+    B. Route 53 latency routing
+    C. No health checks
+    D. Single-AZ only
+
+Answer: A,B
+Explanation: Global data and smart routing underpin active/active.
+
+73. [H][SA] You must integrate 10 AWS services with no custom code.
+    A. Build a monolith
+    B. Step Functions service integrations
+    C. Run on EC2
+    D. Use Kinesis
+
+Answer: B
+Explanation: Direct SDK integrations avoid custom Lambda glue code.
+
+74. [H][MS] How to minimize cold-start for Java Lambdas? (Choose two)
+    A. Use SnapStart (if supported)
+    B. Keep packages lean
+    C. Always attach to VPC
+    D. Disable concurrency limits
+
+Answer: A,B
+Explanation: SnapStart snapshots initialized state; small packages speed init.
+
+75. [H][SA] You need per-tenant ordering in a queue-based backend API.
+    A. SQS Standard single queue
+    B. SQS FIFO with message group per tenant
+    C. SNS SMS
+    D. DynamoDB streams only
+
+Answer: B
+Explanation: Message groups isolate ordering by tenant.
+
+76. [H][MS] Which patterns reduce retry storms? (Choose two)
+    A. Exponential backoff with jitter
+    B. Circuit breakers
+    C. Unlimited immediate retries
+    D. Disable DLQs
+
+Answer: A,B
+Explanation: Backoff and circuit breakers prevent thundering herds.
+
+77. [M][SA] How to do header-based routing for canaries on ALB?
+    A. Weighted DNS only
+    B. ALB listener rules matching headers to target groups
+    C. NAT rules
+    D. S3 event
+
+Answer: B
+Explanation: Listener rules can direct traffic by header values.
+
+78. [M][SA] What’s the benefit of partial batch response with SQS + Lambda?
+    A. No retries needed
+    B. Acknowledge successes and retry only failed IDs
+    C. Larger payloads
+    D. Free invocations
+
+Answer: B
+Explanation: Partial batch reduces duplicate work and speeds recovery.
+
+79. [E][SA] What is a stage in API Gateway?
+    A. A VPC
+    B. A deployment environment (for example, dev/prod) with configs
+    C. A Lambda alias
+    D. A Kinesis shard
+
+Answer: B
+Explanation: Stages hold settings like throttling, logs, and variables.
+
+80. [E][SA] What is a Lambda alias?
+    A. IAM policy
+    B. A pointer to a specific function version
+    C. A CloudFormation parameter
+    D. A WAF rule
+
+Answer: B
+Explanation: Aliases map stable names to versions for traffic shifting.
+
+81. [E][SA] What is API Gateway canary release?
+    A. DNS failover only
+    B. Shifting a percentage of traffic to a new deployment
+    C. A WAF rule
+    D. A log format
+
+Answer: B
+Explanation: Canary releases test new versions with a small traffic slice.
+
+82. [E][MS] Which can trigger Lambda asynchronously? (Choose two)
+    A. S3
+    B. SNS
+    C. ALB
+    D. API Gateway
+
+Answer: A,B
+Explanation: S3/SNS are async; ALB/API Gateway are synchronous.
+
+83. [M][SA] How to connect API Gateway REST API privately to NLB backends?
+    A. Internet Gateway only
+    B. VPC Link
+    C. NAT gateway
+    D. VPC peering
+
+Answer: B
+Explanation: VPC Link creates private connectivity to NLB/ALB in VPC.
+
+84. [M][MS] Which help secure Lambda environment secrets? (Choose two)
+    A. AWS Secrets Manager
+    B. Parameter Store with encryption
+    C. Hardcode in code
+    D. Public S3 file
+
+Answer: A,B
+Explanation: Use managed secret stores with IAM-controlled access.
+
+85. [M][SA] How to implement request/response transformations in REST API?
+    A. Mapping templates (VTL)
+    B. CloudTrail
+    C. Route 53
+    D. IAM SCP
+
+Answer: A
+Explanation: VTL adapts payloads/headers between client and backend.
+
+86. [M][SA] Which API Gateway logs help troubleshoot?
+    A. Access logs and execution logs to CloudWatch
+    B. EBS volume logs
+    C. S3 bucket logs only
+    D. Route 53 logs only
+
+Answer: A
+Explanation: Access/execution logs provide request paths and integration details.
+
+87. [H][SA] A Java Lambda must hit low P99 without provisioned concurrency.
+    A. Switch to REST API
+    B. Use SnapStart and reduce init work
+    C. Use CSV parsing
+    D. Increase timeout
+
+Answer: B
+Explanation: SnapStart snapshots init; reduce cold-start code paths.
+
+88. [H][MS] Multi-tenant API needs isolation and fairness. (Choose two)
+    A. Usage plans per tenant
+    B. Separate accounts for strict isolation
+    C. One key for everyone
+    D. Disable quotas
+
+Answer: A,B
+Explanation: Per-tenant limits and strong tenancy boundaries ensure fairness.
+
+89. [H][SA] Real-time WebSocket chat scaling pattern?
+    A. Single instance
+    B. API Gateway WebSocket + Lambda + DynamoDB for session/state
+    C. DNS only
+    D. S3 website
+
+Answer: B
+Explanation: Combine WebSocket API with serverless compute and persistent storage.
+
+90. [H][MS] Which governance controls protect edge APIs? (Choose two)
+    A. WAF with IP reputation/bot rules
+    B. Cognito JWT validation
+    C. Public test endpoints
+    D. Disable auth for speed
+
+Answer: A,B
+Explanation: Security layers combine WAF and proper authentication.
+
+91. [E][SA] What is Lambda function URL auth option for private?
+    A. NONE
+    B. AWS_IAM (SigV4)
+    C. Custom domain only
+    D. JWT only
+
+Answer: B
+Explanation: Function URLs support NONE and AWS_IAM authorization.
+
+92. [E][SA] What is Step Functions Parallel state?
+    A. Retries only
+    B. Run branches concurrently
+    C. Schema validation
+    D. IAM policy
+
+Answer: B
+Explanation: Parallel executes multiple branches at the same time.
+
+93. [M][SA] How to integrate AppSync with Lambda securely?
+    A. Public unauth endpoints
+    B. VTL resolvers with IAM/Cognito auth to invoke Lambda
+    C. S3 events
+    D. NAT rules
+
+Answer: B
+Explanation: AppSync supports IAM/Cognito and Lambda resolvers securely.
+
+94. [M][MS] Which reduce payload size in APIs? (Choose two)
+    A. Compression (GZIP)
+    B. Pagination
+    C. Duplicate fields
+    D. Random headers
+
+Answer: A,B
+Explanation: Compress and paginate to reduce response sizes.
+
+95. [H][SA] You need multi-Region event failover.
+    A. EventBridge global endpoints
+    B. SNS SMS
+    C. Kinesis only
+    D. CloudWatch only
+
+Answer: A
+Explanation: Global endpoints route events to secondary Region on failure.
+
+96. [H][MS] Which patterns support API blue/green safely? (Choose two)
+    A. Weighted canary with rollback
+    B. Health checks and alarms gating promotion
+    C. Big-bang cutover without checks
+    D. Disable logging
+
+Answer: A,B
+Explanation: Controlled rollouts with health-validation reduce risk.
+
+97. [M][SA] How to call AWS services from Step Functions without Lambda?
+    A. Service integrations (SDK integration)
+    B. EC2 user data
+    C. CloudTrail
+    D. VPC peering
+
+Answer: A
+Explanation: Direct SDK integrations remove the need for glue code.
+
+98. [M][SA] What is ALB -> Lambda good for?
+    A. Full gRPC only
+    B. HTTP(S) requests to Lambda without API Gateway
+    C. DNS caching
+    D. NAT
+
+Answer: B
+Explanation: ALB can target Lambda to serve HTTP workloads.
+
+99. [E][SA] What is CORS?
+    A. Database replication
+    B. Cross-origin resource sharing policy for browsers
+    C. TLS certificate
+    D. IAM permission
+
+Answer: B
+Explanation: CORS config controls which origins can call APIs from browsers.
+
+100. [E][SA] What is Lambda ephemeral storage /tmp used for?
+     A. Permanent data storage
+     B. Temporary files during execution (configurable size)
+     C. S3 mount
+     D. EFS mount by default
+
+Answer: B
+Explanation: /tmp is ephemeral scratch storage up to 10 GB.
+
+101. [M][MS] Which improve observability for serverless? (Choose two)
+     A. Structured logging (Powertools)
+     B. Distributed tracing (X-Ray)
+     C. Disable metrics
+     D. Random print statements only
+
+Answer: A,B
+Explanation: Structured logs and tracing provide insight into flows and performance.
+
+102. [M][SA] How to integrate private EKS services with API Gateway?
+     A. NAT only
+     B. VPC Link to an NLB in front of services
+     C. DNS alias only
+     D. Internet Gateway
+
+Answer: B
+Explanation: VPC Link connects API Gateway privately to NLB/ALB endpoints.
+
+103. [H][MS] Which protect WebSocket backends at scale? (Choose two)
+     A. Authorizers and JWT validation
+     B. WAF rate limiting
+     C. Disable auth for speed
+     D. Single-AZ only
+
+Answer: A,B
+Explanation: Auth and WAF mitigate abuse and unauthorized access.
+
+104. [H][SA] How to enforce tenant isolation at the account boundary?
+     A. One account for all tenants
+     B. Separate accounts with AWS Organizations and SCPs
+     C. Bigger instance size only
+     D. S3 website
+
+Answer: B
+Explanation: Separate accounts provide strong isolation and governance.
+
+105. [M][SA] What’s the effect of larger Lambda memory on performance?
+     A. Slower CPU
+     B. More CPU/network improving execution time, potentially lowering cost
+     C. No change
+     D. Fewer retries
+
+Answer: B
+Explanation: More memory grants more CPU; faster runs can reduce billed duration.
+
+106. [M][SA] How to shape Step Functions JSON between states?
+     A. InputPath/ResultPath/OutputPath
+     B. CloudTrail only
+     C. Route 53 policy
+     D. S3 lifecycle
+
+Answer: A
+Explanation: Paths control the data passed among states.
+
+107. [M][MS] Which help secure container images? (Choose two)
+     A. ECR image scanning
+     B. Sign images and enforce policies
+     C. Public write access to repos
+     D. Store secrets in images
+
+Answer: A,B
+Explanation: Scan and sign images; avoid embedding secrets.
+
+108. [H][SA] You must ensure no public access to APIs except through a corporate network.
+     A. Private API + VPC endpoints + resource policies whitelisting source VPCs
+     B. Public API with WAF only
+     C. Internet Gateway ACLs
+     D. Global public S3
+
+Answer: A
+Explanation: Private endpoints and policies restrict access to corporate networks.
+
+109. [H][MS] Scaling spiky traffic with minimal ops for a container API. (Choose two)
+     A. ECS on Fargate
+     B. Auto scaling on request metrics
+     C. Manual EC2 scaling only
+     D. Single-AZ
+
+Answer: A,B
+Explanation: Fargate reduces ops; autoscaling follows demand.
+
+110. [H][SA] Ensure consistent, symmetric encryption between microservices.
+     A. Hardcoded secrets
+     B. mTLS via mesh with certificate rotation
+     C. Plain HTTP
+     D. Unencrypted ALB
+
+Answer: B
+Explanation: Mesh-managed mTLS provides encryption and identity with automated rotation.
