@@ -1,7 +1,3 @@
-# AWS Module 12 Flashcards — Caching
-
-Note: ~70% sourced from the student guide; ~30% extended caching fundamentals.
-
 ### Q1: What is the goal of caching?
 
 A: Reduce latency and offload origin/backends by serving frequently accessed data from faster storage closer to users.

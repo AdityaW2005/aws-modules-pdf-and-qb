@@ -1,7 +1,3 @@
-# AWS Module 14 Flashcards — Serverless Architectures and Microservices (Lambda, API Gateway, Containers, Step Functions)
-
-Note: ~70% sourced from the student guide; ~30% foundational context. Keep answers concise and exam-ready.
-
 ### Q1: What is serverless in AWS?
 
 A: Building and running applications without managing servers, using services like Lambda, API Gateway, DynamoDB, S3, and Step Functions.

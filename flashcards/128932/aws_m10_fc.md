@@ -1,7 +1,3 @@
-# AWS Module 10 Flashcards — Monitoring, Elasticity, and High Availability
-
-Note: ~70% sourced directly from the student guide; ~30% extended fundamentals for context. Keep answers concise and exam-ready.
-
 ### Q1: What are the primary components of Amazon CloudWatch?
 
 A: Metrics, Logs, Alarms, Dashboards, Events (EventBridge), and Synthetics canaries.

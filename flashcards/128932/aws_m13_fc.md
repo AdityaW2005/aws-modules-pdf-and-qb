@@ -1,7 +1,3 @@
-# AWS Module 13 Flashcards — Building Decoupled Architectures (SQS, SNS, Amazon MQ, Event-Driven)
-
-Note: ~70% sourced from the student guide; ~30% foundational context. Keep answers concise and exam-ready.
-
 ### Q1: What is decoupling in system design?
 
 A: Separating producers and consumers with asynchronous messaging (for example, SQS, SNS, EventBridge) to reduce tight coupling and blast radius.

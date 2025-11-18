@@ -1,7 +1,3 @@
-# AWS Module 15 Flashcards — Data Engineering Patterns (Pipelines, Glue, Kinesis, EMR, Modern Data Architecture)
-
-Note: ~70% sourced from the student guide; ~30% foundational context. Keep answers concise and exam-ready.
-
 ### Q1: What are the five Vs of big data?
 
 A: Volume, Velocity, Variety, Veracity, and Value.

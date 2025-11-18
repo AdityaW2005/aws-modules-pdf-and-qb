@@ -1,7 +1,3 @@
-# AWS Module 16 Flashcards — Planning for Disaster (RTO/RPO, DR Patterns, Multi-Region)
-
-Note: ~70% sourced from the student guide; ~30% foundational context. Keep answers concise and exam-ready.
-
 ### Q1: What is RPO?
 
 A: Recovery Point Objective—the acceptable amount of data loss measured in time.

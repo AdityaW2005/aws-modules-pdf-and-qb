@@ -1,7 +1,3 @@
-# AWS Module 11 Flashcards — Automating Your Architecture
-
-Note: ~70% sourced from the student guide; ~30% extended IaC and automation fundamentals.
-
 ### Q1: What is Infrastructure as Code (IaC)?
 
 A: Managing and provisioning infrastructure through machine-readable definition files rather than manual processes.
