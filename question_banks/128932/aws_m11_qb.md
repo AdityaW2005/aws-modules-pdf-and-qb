@@ -447,3 +447,525 @@ Explanation: Rollback is default behavior on update failures.
 
 Answer: B
 Explanation: Codify ops with event-driven automation, runbooks, and templated infra.
+
+51. [E][SA] What is Stack Termination Protection?
+    A. Prevents updates  
+    B. Prevents stack deletion until disabled  
+    C. Encrypts templates  
+    D. Forces blue/green
+
+Answer: B
+Explanation: Termination protection blocks stack deletion, reducing accidental removal risk.
+
+52. [E][SA] What is a Change Set?
+    A. A monitoring tool  
+    B. A preview of proposed stack changes  
+    C. A log of CloudTrail events  
+    D. A cost report
+
+Answer: B
+Explanation: Change Sets show what will be added/modified/replaced before executing.
+
+53. [E][SA] Which section defines resources to create?
+    A. Parameters  
+    B. Resources  
+    C. Mappings  
+    D. Outputs
+
+Answer: B
+Explanation: The Resources section declares the AWS resources in the stack.
+
+54. [E][SA] What does Drift Detection identify?
+    A. Region outages  
+    B. Differences between actual resources and template  
+    C. Billing anomalies  
+    D. DNS changes
+
+Answer: B
+Explanation: Drift shows out-of-band or unintended changes.
+
+55. [E][SA] What is a Nested Stack used for?
+    A. Testing only  
+    B. Organizing reusable components and reducing template size  
+    C. Billing  
+    D. Monitoring
+
+Answer: B
+Explanation: Nested stacks promote modularity and reuse.
+
+56. [E][SA] What is the AWS CDK?
+    A. DNS service  
+    B. High-level IaC framework that synthesizes to CloudFormation  
+    C. Database  
+    D. CLI wrapper only
+
+Answer: B
+Explanation: CDK defines infra in languages like TS/Python and produces CFN templates.
+
+57. [M][SA] How do you prevent accidental updates to a critical resource during stack update?
+    A. Delete it  
+    B. Stack policy denying updates to that logical resource  
+    C. Use Outputs only  
+    D. Use Mappings
+
+Answer: B
+Explanation: Stack policies protect resources from update actions.
+
+58. [M][SA] What is the benefit of using SSM Parameter Store for AMI IDs?
+    A. Higher cost  
+    B. Centralized, versioned references across stacks  
+    C. Requires macros  
+    D. Replaces IAM
+
+Answer: B
+Explanation: Parameter Store provides consistent, auditable values for deployments.
+
+59. [M][MS] Which two improve safety of database changes? (Choose 2)
+    A. DeletionPolicy Snapshot  
+    B. No backups  
+    C. Change Sets and maintenance windows  
+    D. Manual console edits in prod
+
+Answer: A, C
+Explanation: Snapshots preserve data; planned windows and reviews reduce risk.
+
+60. [M][SA] What is a Custom Resource?
+    A. A macro  
+    B. A Lambda/service-backed resource to perform non-native actions  
+    C. A Parameter  
+    D. An Output
+
+Answer: B
+Explanation: Custom resources extend CFN beyond built-in types.
+
+61. [M][SA] Which is true about Exports/Imports?
+    A. Export names can duplicate  
+    B. Exports must be unique per account/Region and cannot form cycles  
+    C. Imports auto-update on name change  
+    D. Not supported
+
+Answer: B
+Explanation: Export uniqueness and acyclic references are enforced.
+
+62. [M][SA] What does UpdateReplacePolicy control?
+    A. Drift detection  
+    B. Behavior when a resource is replaced (Retain/Snapshot/Delete)  
+    C. Change Set approval  
+    D. Macro expansion
+
+Answer: B
+Explanation: Governs disposition of the old resource on replacement.
+
+63. [M][SA] How can you ensure templates follow security rules pre-deploy?
+    A. Ignore until prod  
+    B. Use cfn-guard/cfn-lint in CI  
+    C. Disable IAM  
+    D. Manual review only
+
+Answer: B
+Explanation: Policy-as-code and linting enforce standards early.
+
+64. [M][SA] What is StackSets delegated admin used for?
+    A. DR only  
+    B. Allow a designated account to manage StackSets across Org members  
+    C. Billing only  
+    D. DNS
+
+Answer: B
+Explanation: Delegated admin manages multi-account/Region deployments centrally.
+
+65. [M][SA] Which is a good pattern to share VPC IDs?
+    A. Hardcode IDs  
+    B. Export from network stack; ImportValue in app stack  
+    C. Store in EC2 tags  
+    D. Email values
+
+Answer: B
+Explanation: Cross-stack references are supported and reliable.
+
+66. [M][MS] Which two reduce blast radius of infra changes? (Choose 2)
+    A. Small, frequent deploys  
+    B. Blue/green  
+    C. One mega deploy  
+    D. Manual hotfixes in prod
+
+Answer: A, B
+Explanation: Smaller changes and blue/green lower risk.
+
+67. [M][SA] How do you ensure EC2 signals readiness before stack proceeds?
+    A. cfn-signal with CreationPolicy/WaitOnResourceSignals  
+    B. CloudTrail  
+    C. GuardDuty  
+    D. S3 events
+
+Answer: A
+Explanation: Stack waits until signals received or timeout.
+
+68. [M][SA] Which is best to inject secrets into templates?
+    A. Hardcode  
+    B. Secrets Manager dynamic references  
+    C. Outputs  
+    D. Metadata plaintext
+
+Answer: B
+Explanation: Dynamic references fetch secrets securely at deploy time.
+
+69. [M][SA] What is cdk synth output?
+    A. Lambda code  
+    B. CloudFormation template  
+    C. Docker image  
+    D. S3 policy
+
+Answer: B
+Explanation: CDK synthesizes to a CFN template for deployment.
+
+70. [H][SA] A macro is modifying templates in unexpected ways. Mitigation?
+    A. Deploy to prod first  
+    B. Version macros; test/validate in CI before use  
+    C. Ignore issues  
+    D. Remove IAM
+
+Answer: B
+Explanation: Governance and tests ensure macro safety.
+
+71. [H][SA] You must prevent a critical resource from replacement during updates. Choose:
+    A. Stack policy  
+    B. DeletionPolicy Retain only  
+    C. Drift detection  
+    D. CloudWatch alarm only
+
+Answer: A
+Explanation: Stack policies can deny Update:Replace for selected logical IDs.
+
+72. [H][MS] Which two help multi-account governance with IaC? (Choose 2)
+    A. StackSets with delegated admin  
+    B. SCPs to restrict actions  
+    C. Manual account edits  
+    D. Random naming
+
+Answer: A, B
+Explanation: StackSets scale deployments; SCPs enforce guardrails.
+
+73. [H][SA] You need to import existing resources into management. Feature?
+    A. Delete and recreate  
+    B. Resource import  
+    C. Macros  
+    D. Exports
+
+Answer: B
+Explanation: CFN can import supported resources into stacks.
+
+74. [H][SA] How do you enforce org-wide template checks at deploy time?
+    A. CloudFormation Hooks  
+    B. Manual review only  
+    C. Disable pipelines  
+    D. Trusted Advisor
+
+Answer: A
+Explanation: Hooks run policy checks during create/update/delete.
+
+75. [H][SA] Which approach avoids cross-stack cyclic dependencies?
+    A. Single monolithic template  
+    B. Design exports/imports carefully; use SSM/Parameters for loose coupling  
+    C. Force mutual imports  
+    D. Ignore errors
+
+Answer: B
+Explanation: Loose coupling prevents dependency cycles and simplifies updates.
+
+76. [M][SA] What does the Transform AWS::Serverless enable?
+    A. VPC creation  
+    B. SAM shorthand for serverless apps expanded into CFN  
+    C. Macie scans  
+    D. Route 53
+
+Answer: B
+Explanation: The Serverless transform expands SAM syntax to native resources.
+
+77. [M][SA] Best practice for parameterizing per-environment values?
+    A. Hardcode  
+    B. Parameters with defaults and constraints; SSM for shared values  
+    C. Use Outputs  
+    D. Inline secrets
+
+Answer: B
+Explanation: Parameters and SSM improve reuse and safety.
+
+78. [M][SA] How to reduce drift risk?
+    A. Allow console edits  
+    B. Immutable deploys, pipeline-only changes, and guardrails  
+    C. Disable CloudFormation  
+    D. Use manual scripts
+
+Answer: B
+Explanation: Automation and governance prevent out-of-band changes.
+
+79. [M][SA] Which field prevents stack deletion?
+    A. Stack policy  
+    B. Termination protection  
+    C. DeletionPolicy  
+    D. UpdatePolicy
+
+Answer: B
+Explanation: Termination protection must be disabled before deletion.
+
+80. [M][MS] Which two are advantages of CDK? (Choose 2)
+    A. Strong typing/tests  
+    B. Higher-level constructs  
+    C. No need to synthesize  
+    D. Eliminates CloudFormation
+
+Answer: A, B
+Explanation: CDK uses language features and abstractions, then synthesizes to CFN.
+
+81. [H][SA] You must ensure only approved exports are consumed by app stacks. How?
+    A. No exports  
+    B. IAM permissions and review of ImportValue usage in CI  
+    C. Console edits  
+    D. Random names
+
+Answer: B
+Explanation: Governance/CI controls how imports are referenced and deployed.
+
+82. [H][SA] A production stack update failed halfway. What’s the safest recovery?
+    A. Force continue  
+    B. Investigate events, fix template/params, create a new Change Set and redeploy  
+    C. Delete stack  
+    D. Manual edits
+
+Answer: B
+Explanation: Use events to diagnose and redeploy safely.
+
+83. [H][MS] Which two ensure secrets aren’t exposed in logs/templates? (Choose 2)
+    A. Dynamic references to Secrets Manager  
+    B. SSM SecureString  
+    C. Echo secrets in user data  
+    D. Store in Outputs
+
+Answer: A, B
+Explanation: Dynamic references resolve at deploy time and aren’t stored in plaintext.
+
+84. [M][SA] How to conditionally create resources by environment?
+    A. Separate templates only  
+    B. Use Conditions with Parameters  
+    C. Always create  
+    D. Use Outputs only
+
+Answer: B
+Explanation: Conditions tied to parameters control resource creation.
+
+85. [M][SA] What is Stack drift vs Config drift?
+    A. Same  
+    B. Stack drift is CFN-managed resource divergence; config drift is broader system change  
+    C. Billing  
+    D. DNS
+
+Answer: B
+Explanation: Stack drift is a subset specific to CFN-managed resources.
+
+86. [M][SA] What does a Stack policy NOT control?
+    A. Update/Replace of resources  
+    B. Delete stack protection  
+    C. Which logical IDs can change  
+    D. None
+
+Answer: B
+Explanation: Deletion prevention is via termination protection, not stack policy.
+
+87. [M][SA] What is the role of Outputs in CI/CD?
+    A. None  
+    B. Provide values to downstream stages (for example, ALB DNS)  
+    C. Replace Parameters  
+    D. Store secrets
+
+Answer: B
+Explanation: Outputs inform following jobs in the pipeline.
+
+88. [H][SA] How do you enforce checks at resource create/update time?
+    A. Hooks  
+    B. Budgets  
+    C. CloudTrail  
+    D. WAF
+
+Answer: A
+Explanation: Hooks run custom validations during lifecycle events.
+
+89. [H][SA] Which approach makes rollbacks simpler?
+    A. Large batched changes  
+    B. Small changes and blue/green cutovers  
+    C. Manual fixes  
+    D. Ignore alerts
+
+Answer: B
+Explanation: Smaller changes and blue/green ease reversal.
+
+90. [M][SA] What is the practical limit of deeply nested stacks?
+    A. Unlimited  
+    B. There are quotas and complexity concerns; keep nesting shallow  
+    C. 100 layers always  
+    D. No effect
+
+Answer: B
+Explanation: Quotas and maintainability limit nesting depth.
+
+91. [M][SA] How do you ensure cross-account StackSet deployments use least privilege?
+    A. AdministratorAccess  
+    B. Scoped execution roles and permission models  
+    C. Root user  
+    D. No roles
+
+Answer: B
+Explanation: Use minimal roles with trusted relationships.
+
+92. [M][MS] Which two pre-deploy checks are recommended? (Choose 2)
+    A. cfn-lint  
+    B. cfn-guard rules  
+    C. Manual prod edits  
+    D. Skip approvals
+
+Answer: A, B
+Explanation: Linting and policy checks catch errors and violations early.
+
+93. [H][SA] You must share a VPC ID with dozens of app stacks. What avoids coupling?
+    A. Export/ImportValue plus SSM Parameter for discovery  
+    B. Hardcode  
+    C. Email  
+    D. Inline in template
+
+Answer: A
+Explanation: Exports and SSM enable decoupled consumption.
+
+94. [M][SA] What’s the advantage of Outputs with descriptions?
+    A. None  
+    B. Improves operability and documentation for consumers  
+    C. Increases cost  
+    D. Forces approvals
+
+Answer: B
+Explanation: Descriptions clarify purpose for downstream use.
+
+95. [M][SA] Which helps avoid hard-coding ARNs?
+    A. Fn::Sub with pseudo parameters and parameters  
+    B. Outputs only  
+    C. Macros only  
+    D. Hardcode
+
+Answer: A
+Explanation: Compose ARNs dynamically using Sub and variables.
+
+96. [H][SA] You need canary deployments for Lambda with IaC. Choose:
+    A. Manual edits  
+    B. Use SAM/CFN with CodeDeploy Lambda alias traffic shifting  
+    C. Outputs only  
+    D. Stack policy
+
+Answer: B
+Explanation: SAM/CFN integrate with CodeDeploy for Lambda canaries.
+
+97. [M][SA] What is a practical use of Metadata?
+    A. Store secrets  
+    B. Provide config for cfn-init or tools  
+    C. Disable updates  
+    D. Billing
+
+Answer: B
+Explanation: Metadata guides helper scripts during provisioning.
+
+98. [M][SA] How do you inject build numbers into stack names?
+    A. Hardcode  
+    B. Pass Parameters from CI and use Fn::Sub in names  
+    C. Use Outputs  
+    D. Use Macros always
+
+Answer: B
+Explanation: CI supplies values; templates substitute them in logical names.
+
+99. [M][MS] Which two reduce human error in deployments? (Choose 2)
+    A. Automation via pipelines  
+    B. Manual changes  
+    C. Linting/policy checks  
+    D. Skip code review
+
+Answer: A, C
+Explanation: Automation and checks prevent mistakes.
+
+100. [M][SA] How do you ensure a stack won’t delete critical EBS volumes?
+     A. DeletionPolicy Retain on volumes  
+     B. Termination protection only  
+     C. Outputs  
+     D. Drift detection
+
+Answer: A
+Explanation: Retain preserves resources on stack deletion.
+
+101. [M][SA] What is an implicit dependency example?
+     A. DependsOn only  
+     B. A resource Ref/GetAtt another resource  
+     C. Outputs  
+     D. Parameters only
+
+Answer: B
+Explanation: References create ordering without DependsOn.
+
+102. [H][SA] You must validate templates for PCI controls pre-deploy. Solution?
+     A. Skip checks  
+     B. CloudFormation Hooks with org policies and cfn-guard in CI  
+     C. Manual review only  
+     D. Logs only
+
+Answer: B
+Explanation: Hooks and guard enforce controls programmatically.
+
+103. [M][SA] Which feature pauses a stack update until a success signal?
+     A. DeletionPolicy  
+     B. CreationPolicy/WaitOnResourceSignals  
+     C. Macros  
+     D. Outputs
+
+Answer: B
+Explanation: The stack waits for signals or timeout before proceeding.
+
+104. [M][SA] What is the safest way to roll out a new VPC baseline across 50 accounts?
+     A. Manual console edits  
+     B. StackSets with OU targets and phased rollout  
+     C. SSH to each account  
+     D. Copy/paste
+
+Answer: B
+Explanation: StackSets automate and phase deployments across accounts/Regions.
+
+105. [H][MS] Which two patterns avoid downtime for ALB updates? (Choose 2)
+     A. Blue/green with new ALB and cutover  
+     B. Rolling updates of target groups  
+     C. Delete ALB immediately  
+     D. Manual edits in prod
+
+Answer: A, B
+Explanation: Blue/green and rolling changes maintain availability.
+
+106. [M][SA] How to expose a VPC ID from a nested network stack to parent?
+     A. Hardcode in parent  
+     B. Output in child and use Fn::GetAtt/Fn::ImportValue as designed  
+     C. Parameters only  
+     D. Not possible
+
+Answer: B
+Explanation: Nested stacks expose outputs to the parent stack.
+
+107. [M][SA] Which approach supports safe parameter changes?
+     A. Edit in prod  
+     B. Use Change Sets with approvals in CI/CD  
+     C. Random changes  
+     D. No constraints
+
+Answer: B
+Explanation: Change Sets + approvals reduce risk.
+
+108. [H][SA] You need to verify that stacks adhere to tagging standards before deploy. Choose:
+     A. Skip tags  
+     B. cfn-guard rules and Hooks to enforce tag presence/format  
+     C. Drift detection only  
+     D. Outputs
+
+Answer: B
+Explanation: Policy-as-code validates tags consistently pre-deploy.

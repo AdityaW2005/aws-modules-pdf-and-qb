@@ -447,3 +447,543 @@ Explanation: Public IPv4 addresses change on stop/start unless using an Elastic 
 
 Answer: A, C  
 Explanation: Endpoints avoid internet paths; Flow Logs capture traffic metadata for analysis.
+
+51. [E][SA] What is the scope of a VPC?
+    A. Global  
+    B. Region  
+    C. AZ  
+    D. Account
+
+Answer: B  
+Explanation: A VPC is scoped to a single Region and spans multiple AZs there.
+
+52. [E][SA] Which route always exists in a VPC route table?
+    A. 0.0.0.0/0 → IGW  
+    B. VPC CIDR → local  
+    C. 0.0.0.0/0 → NAT  
+    D. TGW → attachment
+
+Answer: B  
+Explanation: The local route to the VPC CIDR is implicit and cannot be removed.
+
+53. [E][SA] What makes a subnet public?
+    A. Larger CIDR  
+    B. Route to an Internet Gateway  
+    C. More SGs  
+    D. Using IPv6
+
+Answer: B  
+Explanation: The default route to an IGW makes a subnet public.
+
+54. [E][SA] Where must a NAT gateway reside?
+    A. Private subnet  
+    B. Public subnet with route to IGW  
+    C. Any subnet  
+    D. On-prem
+
+Answer: B  
+Explanation: NAT gateways must be in public subnets to forward outbound traffic for private subnets.
+
+55. [E][SA] What’s the difference between SGs and NACLs?
+    A. Both are stateless  
+    B. SGs are stateful; NACLs are stateless  
+    C. SGs support deny rules  
+    D. NACLs are per-ENI
+
+Answer: B  
+Explanation: SGs are stateful and attached to ENIs; NACLs are stateless and per-subnet.
+
+56. [E][SA] Which endpoint type is used for S3?
+    A. Interface endpoint  
+    B. Gateway endpoint  
+    C. NAT endpoint  
+    D. DX endpoint
+
+Answer: B  
+Explanation: S3 and DynamoDB use gateway endpoints; most others use interface endpoints.
+
+57. [E][SA] What is the purpose of an egress-only IGW?
+    A. IPv4 inbound  
+    B. IPv6 outbound-only  
+    C. DNS  
+    D. VPN
+
+Answer: B  
+Explanation: Egress-only IGW provides outbound-only IPv6 connectivity.
+
+58. [M][SA] Why deploy a NAT gateway per AZ?
+    A. Cheaper than one per VPC  
+    B. Avoid cross-AZ data charges and single-AZ SPOF  
+    C. Required by SGs  
+    D. Required by NACLs
+
+Answer: B  
+Explanation: Localizing NAT per AZ avoids data charges and improves availability.
+
+59. [M][SA] What does longest prefix match mean?
+    A. Shortest path wins  
+    B. Most specific route (largest prefix length) wins  
+    C. Random tie-break  
+    D. Lowest metric wins
+
+Answer: B  
+Explanation: Routing selects the most specific matching prefix.
+
+60. [M][SA] How can you restrict egress to only specific AWS services?
+    A. Public subnets only  
+    B. Use VPC endpoints for allowed services and remove general NAT route  
+    C. Use wider NACL allows  
+    D. Assign public IPs to all
+
+Answer: B  
+Explanation: Endpoints provide private, service-specific paths; combine with SG/NACL limits.
+
+61. [E][SA] What is the default DNS server for a VPC?
+    A. 8.8.8.8  
+    B. The VPC+2 address  
+    C. Any on-prem server  
+    D. SSM
+
+Answer: B  
+Explanation: The VPC-provided resolver is at base network address + 2.
+
+62. [E][SA] What is a DHCP options set used for?
+    A. Setting IAM roles  
+    B. Configuring DNS, domain name, NTP  
+    C. Managing VPC CIDRs  
+    D. NAT rules
+
+Answer: B  
+Explanation: DHCP options set controls client network parameters like domain and DNS.
+
+63. [M][SA] You created an interface endpoint but traffic still goes to the internet. Likely cause?
+    A. No SGs on endpoint  
+    B. Private DNS not enabled and clients still resolve public endpoints  
+    C. Missing NAT  
+    D. Wrong AZ
+
+Answer: B  
+Explanation: Enable private DNS so service names resolve to endpoint private IPs.
+
+64. [M][SA] Which statement about VPC peering is true?
+    A. It’s transitive  
+    B. It’s non-transitive  
+    C. Requires TGW  
+    D. Requires DX
+
+Answer: B  
+Explanation: VPC peering provides non-transitive private connectivity between two VPCs.
+
+65. [M][MS] Which two are true about interface endpoints? (Choose 2)
+    A. They are ENIs in subnets  
+    B. They use SGs  
+    C. They use gateway endpoint policies  
+    D. They require public IPs
+
+Answer: A, B  
+Explanation: Interface endpoints are ENIs and support SGs; gateway endpoints are for S3/DynamoDB.
+
+66. [E][SA] Which range must NACLs allow for return traffic?
+    A. 0–1023  
+    B. 1024–65535 (ephemeral)  
+    C. 22–22  
+    D. 443–443
+
+Answer: B  
+Explanation: Stateless NACLs must allow ephemeral ports for return flows.
+
+67. [M][SA] Instances in a private subnet can’t reach the internet. Which is NOT a likely fix?
+    A. Add 0.0.0.0/0 → NAT GW  
+    B. Place NAT GW in public subnet  
+    C. Assign public IPs to private instances  
+    D. Ensure route table association to NAT
+
+Answer: C  
+Explanation: Private instances shouldn’t have public IPs; use NAT in a public subnet and proper routes.
+
+68. [H][SA] A custom NACL denies ephemeral ports. Effect?
+    A. No impact  
+    B. Breaks return traffic, causing timeouts  
+    C. Only blocks inbound  
+    D. Only blocks DNS
+
+Answer: B  
+Explanation: Stateless NACLs must allow ephemeral return traffic.
+
+69. [M][SA] Which option reduces public IPv4 usage?
+    A. Assign public IPs broadly  
+    B. Use VPC endpoints for S3/DynamoDB  
+    C. Put DB in public subnet  
+    D. Use IGW for all
+
+Answer: B  
+Explanation: Endpoints reduce reliance on public IPv4 and internet paths.
+
+70. [M][SA] Which tool tests network reachability in a VPC?
+    A. CodeDeploy  
+    B. Reachability Analyzer  
+    C. CloudFormation  
+    D. CloudTrail
+
+Answer: B  
+Explanation: Reachability Analyzer simulates paths and identifies blockers.
+
+71. [E][SA] What is the effect of disabling source/destination check on an instance?
+    A. Blocks traffic  
+    B. Allows the instance to forward traffic (for NAT/appliance roles)  
+    C. Deletes routes  
+    D. Changes CIDR
+
+Answer: B  
+Explanation: Disabling enables routing/NAT functions on the instance.
+
+72. [M][SA] How many SGs can you typically attach to an ENI by default?
+    A. 1  
+    B. 5 (quota dependent)  
+    C. 10  
+    D. Unlimited
+
+Answer: B  
+Explanation: Default is often 5; quotas vary by Region and can be raised.
+
+73. [M][SA] Which best practice helps avoid blackholed routes?
+    A. Use static targets  
+    B. Automate route updates and remove invalid targets  
+    C. Never delete ENIs  
+    D. Use a single route table
+
+Answer: B  
+Explanation: Ensure route targets exist; clean up stale entries.
+
+74. [M][MS] Which are characteristics of gateway endpoints? (Choose 2)
+    A. Attached to route tables  
+    B. Use endpoint policies  
+    C. Are ENIs  
+    D. Require SGs
+
+Answer: A, B  
+Explanation: Gateway endpoints are added to route tables and support endpoint policies.
+
+75. [E][SA] What indicates a subnet is private?
+    A. It has public IPs  
+    B. No 0.0.0.0/0 route to IGW  
+    C. Uses IPv6  
+    D. Has many SGs
+
+Answer: B  
+Explanation: Private subnets lack default routes to an IGW.
+
+76. [H][SA] Compliance requires logging DNS queries. What should you enable?
+    A. CloudTrail  
+    B. Route 53 Resolver query logging  
+    C. VPC Flow Logs only  
+    D. CodeBuild logs
+
+Answer: B  
+Explanation: Resolver query logging captures DNS queries; combine with VPC Flow Logs for network visibility.
+
+77. [M][SA] You must allow HTTPS egress only from a private subnet. What’s needed?
+    A. SG egress allow tcp/443 and NACL allow ephemeral return  
+    B. SG allow all  
+    C. NACL deny all  
+    D. Public IPs
+
+Answer: A  
+Explanation: Allow HTTPS out and ephemeral return ports with least privilege.
+
+78. [M][SA] What is the main function of the main route table?
+    A. Force internet access  
+    B. Default routing for subnets without explicit association  
+    C. Contains IGW only  
+    D. Is tied to NAT
+
+Answer: B  
+Explanation: Subnets use the main route table unless associated to another.
+
+79. [E][SA] Which choice provides private access to AWS APIs without NAT?
+    A. Interface VPC endpoints  
+    B. NAT instance  
+    C. IGW  
+    D. Public IP
+
+Answer: A  
+Explanation: Interface endpoints offer private connectivity to many AWS services.
+
+80. [H][SA] A NACL denies outbound ephemeral ports. What’s the symptom?
+    A. Inbound blocked only  
+    B. Outbound connections establish but replies are dropped  
+    C. DNS fails only  
+    D. No effect on TCP
+
+Answer: B  
+Explanation: Without outbound ephemeral, return traffic is blocked.
+
+81. [M][SA] Which attribute enables instances to get DNS hostnames?
+    A. Enable DNS hostnames on VPC  
+    B. Enable IGW  
+    C. Enable DHCP  
+    D. Enable NAT
+
+Answer: A  
+Explanation: Both DNS resolution and DNS hostnames should be enabled for name assignment.
+
+82. [M][MS] Which are true about security groups? (Choose 2)
+    A. Allow-only rules  
+    B. Stateless  
+    C. Per-ENI  
+    D. Ordered rule evaluation like NACLs
+
+Answer: A, C  
+Explanation: SGs are stateful, allow-only, and attached to ENIs.
+
+83. [E][SA] What is a customer-managed prefix list used for?
+    A. IAM role assignment  
+    B. Grouping CIDRs for reuse in SGs and routes  
+    C. NAT configuration  
+    D. S3 access
+
+Answer: B  
+Explanation: Prefix lists centralize CIDRs for consistent policy use.
+
+84. [M][SA] Which causes a route table blackhole entry?
+    A. Target ENI deleted  
+    B. Too many routes  
+    C. Missing SGs  
+    D. High TTL
+
+Answer: A  
+Explanation: When a route target no longer exists, the route becomes blackholed.
+
+85. [H][MS] Which two actions reduce public IPv4 reliance? (Choose 2)
+    A. Use interface endpoints  
+    B. Assign EIPs to all instances  
+    C. Use gateway endpoints for S3/DynamoDB  
+    D. Route all traffic to IGW
+
+Answer: A, C  
+Explanation: Endpoints avoid internet paths and public IPv4 consumption.
+
+86. [M][SA] A VPC endpoint policy denies s3:PutObject. Effect?
+    A. No effect  
+    B. Blocks PutObject through the endpoint, regardless of IAM allow  
+    C. Changes bucket policy  
+    D. Enables public access
+
+Answer: B  
+Explanation: Endpoint policies are evaluated and can restrict actions even if IAM allows.
+
+87. [M][SA] Which statement about default NACL is true?
+    A. Denies all  
+    B. Allows all  
+    C. Mixed allow/deny  
+    D. No effect
+
+Answer: B  
+Explanation: The default NACL allows all traffic by default.
+
+88. [H][SA] You need strict subnet isolation with explicit deny. Choose control:
+    A. SGs  
+    B. NACLs  
+    C. IAM  
+    D. Endpoint policy
+
+Answer: B  
+Explanation: NACLs provide subnet-level explicit deny/allow.
+
+89. [M][SA] What’s the best way to ensure only app-tier can talk to DB-tier?
+    A. NACL allow from VPC CIDR  
+    B. DB SG allows source = app SG  
+    C. Open DB to 0.0.0.0/0  
+    D. NAT only
+
+Answer: B  
+Explanation: SG referencing SG is precise and dynamic.
+
+90. [M][SA] What indicates a public subnet instance can receive inbound internet traffic?
+    A. Private IP only  
+    B. Public or Elastic IP and SG allowing inbound  
+    C. NAT  
+    D. IGW disabled
+
+Answer: B  
+Explanation: Inbound requires a public/EIP, IGW route, and permissive SG/NACL.
+
+91. [E][SA] Which log helps analyze VPC traffic patterns?
+    A. CloudTrail  
+    B. VPC Flow Logs  
+    C. S3 access logs  
+    D. Lambda logs
+
+Answer: B  
+Explanation: Flow Logs record IP traffic metadata.
+
+92. [M][SA] A route to 10.0.0.0/8 and 10.1.0.0/16 exists. Which wins for 10.1.2.3?
+    A. 10.0.0.0/8  
+    B. 10.1.0.0/16  
+    C. Random  
+    D. Local only
+
+Answer: B  
+Explanation: The longest prefix (more specific /16) is chosen.
+
+93. [M][SA] Which statement about private hosted zones (PHZ) is true?
+    A. They resolve on the internet  
+    B. They resolve only within associated VPCs  
+    C. They require public IPs  
+    D. They are Region global
+
+Answer: B  
+Explanation: PHZs are VPC-scoped via association.
+
+94. [H][SA] You need to block egress to the internet entirely for DB subnets. Approach?
+    A. Remove IGW/NAT routes; no 0.0.0.0/0; restrict SG/NACL egress  
+    B. Assign EIPs  
+    C. Use interface endpoints for all  
+    D. Use WAF
+
+Answer: A  
+Explanation: No default routes to IGW/NAT plus least-privilege SG/NACL blocks egress.
+
+95. [M][SA] What is the function of the local VPC router?
+    A. NAT  
+    B. Handles routing between subnets and to VPC attachments  
+    C. DNS  
+    D. WAF
+
+Answer: B  
+Explanation: The implicit VPC router implements route tables and local routing.
+
+96. [M][MS] Which two help diagnose reachability failures? (Choose 2)
+    A. Reachability Analyzer  
+    B. VPC Flow Logs  
+    C. CloudShell  
+    D. S3 Inventory
+
+Answer: A, B  
+Explanation: Analyzer simulates paths; Flow Logs show traffic actions.
+
+97. [E][SA] What determines whether an ALB is internal or internet-facing?
+    A. Listener port  
+    B. Subnets and IP type (public vs private)  
+    C. Target group protocol  
+    D. WAF presence
+
+Answer: B  
+Explanation: Public subnets/public IPs → internet-facing; private subnets → internal.
+
+98. [H][SA] You must ensure no cross-AZ data charges from NAT. Design?
+    A. Single NAT  
+    B. NAT per AZ and route subnets to local NAT  
+    C. Public IPs  
+    D. Interface endpoints only
+
+Answer: B  
+Explanation: Localize NAT traffic within each AZ.
+
+99. [M][SA] Which AWS feature lets you reuse CIDR collections in SGs/routes?
+    A. Prefix lists  
+    B. Resource groups  
+    C. Tags  
+    D. Parameter Store
+
+Answer: A  
+Explanation: Customer-managed prefix lists centralize CIDRs.
+
+100. [M][SA] What is the effect of disassociating a subnet from the main route table without associating another?
+     A. It loses routing  
+     B. It’s auto-associated back to main  
+     C. It becomes public  
+     D. It gets a default IGW route
+
+Answer: B  
+Explanation: A subnet must always have an associated route table; main is default.
+
+101. [H][SA] You need to ensure only approved on-prem CIDRs can reach VPC. Approach?
+     A. Wide NACL allows  
+     B. Filter routes on VPN/DX and restrict SGs/NACLs to approved CIDRs  
+     C. Use IGW  
+     D. Use PHZ
+
+Answer: B  
+Explanation: Route filtering plus least-privilege SG/NACL controls access.
+
+102. [M][SA] Which attribute makes endpoints preferred over internet paths?
+     A. Lower cost always  
+     B. Private connectivity within AWS network and controllable via SG/endpoint policy  
+     C. Faster DNS  
+     D. Public IPs
+
+Answer: B  
+Explanation: Endpoints keep traffic on AWS backbone and enforce policies.
+
+103. [M][MS] Which two are needed for private subnets to reach the internet? (Choose 2)
+     A. NAT GW in public subnet  
+     B. 0.0.0.0/0 → NAT in private route table  
+     C. Public IPs on instances  
+     D. IGW on DB subnets
+
+Answer: A, B  
+Explanation: NAT must be reachable through IGW and private subnets must route default to NAT.
+
+104. [E][SA] What is an ENI?
+     A. A subnet  
+     B. A virtual network interface attachable to instances  
+     C. A NAT  
+     D. A VPC endpoint only
+
+Answer: B  
+Explanation: ENIs carry private IPs and SGs and attach to instances.
+
+105. [M][SA] Which helps organize SGs at scale?
+     A. Random names  
+     B. Tags and IaC  
+     C. Manual edits only  
+     D. Avoid references
+
+Answer: B  
+Explanation: Use tags, naming conventions, and IaC to manage SG sprawl.
+
+106. [H][SA] You must block all outbound except DNS to a central resolver. How?
+     A. SG egress allow udp/53 only; NACL allow UDP/53 and ephemeral return; no default NAT route  
+     B. Allow all  
+     C. Use IGW  
+     D. Public IPs
+
+Answer: A  
+Explanation: Constrain egress to DNS only and remove broad egress paths.
+
+107. [M][SA] What is the relationship between SGs and subnets?
+     A. SGs attach to subnets  
+     B. SGs attach to ENIs/resources within subnets  
+     C. SGs attach to route tables  
+     D. SGs attach to NATs
+
+Answer: B  
+Explanation: SGs are per-ENI; subnets use NACLs.
+
+108. [M][MS] Which two help troubleshoot connectivity quickly? (Choose 2)
+     A. Check SG/NACL rules  
+     B. Check route tables for target validity  
+     C. Reboot instances immediately  
+     D. Disable DNS
+
+Answer: A, B  
+Explanation: Rule misconfigurations and route issues are common root causes.
+
+109. [E][SA] Which statement about subnets is true?
+     A. They can span multiple AZs  
+     B. They are confined to a single AZ  
+     C. They are global  
+     D. They are cross-Region
+
+Answer: B  
+Explanation: Subnets are AZ-scoped.
+
+110. [M][SA] How do you ensure endpoints do not become a backdoor to S3 for unintended accounts?
+     A. Use bucket policies with aws:SourceVpce and aws:Principal conditions  
+     B. Allow public read  
+     C. Use IGW only  
+     D. Disable S3 policies
+
+Answer: A  
+Explanation: Bucket policies can require the request to originate from specific VPC endpoints and principals.

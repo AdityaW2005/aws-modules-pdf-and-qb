@@ -447,3 +447,453 @@ Explanation: Route 53 health checks remove unhealthy endpoints in DNS responses.
 
 Answer: A
 Explanation: A layered approach across metrics, logs, traces, and API auditing provides the best visibility.
+
+51. [E][SA] Which feature adds ML-based expected value bands around a metric?
+    A. Math expressions
+    B. Anomaly detection
+    C. Contributor insights
+    D. Cross-account dashboards
+
+Answer: B
+Explanation: Anomaly detection builds a baseline and alarms on deviations.
+
+52. [E][SA] What is the purpose of CloudWatch composite alarms?
+    A. Create canaries
+    B. Combine multiple alarms into one condition
+    C. Replace dashboards
+    D. Provide metrics math
+
+Answer: B
+Explanation: Composite alarms reduce alarm noise by combining multiple alarm states.
+
+53. [E][SA] Which service provides request tracing across microservices?
+    A. CloudTrail
+    B. AWS X-Ray
+    C. Inspector
+    D. Macie
+
+Answer: B
+Explanation: X-Ray traces requests and visualizes service maps and latencies.
+
+54. [E][SA] What is the benefit of ALB target groups per version in blue/green?
+    A. Lower TLS cost
+    B. Easy traffic shifting and rollback
+    C. Fewer AZs
+    D. Less logging
+
+Answer: B
+Explanation: Switching target group bindings or weights enables fast cutover.
+
+55. [E][SA] Route 53 health checks evaluate what by default?
+    A. IAM policies
+    B. Endpoint responses to HTTP/HTTPS/TCP probes
+    C. VPC Flow Logs
+    D. S3 replication
+
+Answer: B
+Explanation: Health checks probe endpoints and optionally integrate with CloudWatch metrics.
+
+56. [E][SA] What is CloudWatch metric math used for?
+    A. Calculus only
+    B. Derive new time series from existing metrics
+    C. Replace logs
+    D. DNS routing
+
+Answer: B
+Explanation: Metric math builds composite metrics for alarms/dashboards.
+
+57. [E][SA] What does cross-zone load balancing do for NLB when enabled?
+    A. Sends traffic only within a zone
+    B. Distributes traffic across all AZs
+    C. Disables static IPs
+    D. Disables TLS
+
+Answer: B
+Explanation: It balances traffic across registered targets in all zones.
+
+58. [E][SA] What is the primary value of CloudWatch Synthetics canaries?
+    A. Replace ALB
+    B. Proactively test endpoints and user flows
+    C. Encrypt data at rest
+    D. Manage VPCs
+
+Answer: B
+Explanation: Canaries continuously verify availability and correctness.
+
+59. [E][SA] What is an Auto Scaling lifecycle hook?
+    A. A DNS rule
+    B. A pause during scale in/out for custom actions
+    C. A CloudTrail event
+    D. A Route 53 alias
+
+Answer: B
+Explanation: Hooks allow draining, configuration, or notifications.
+
+60. [M][SA] Which alarm setup reduces false positives for spiky metrics?
+    A. Low evaluation periods
+    B. Longer evaluation periods with anomaly detection
+    C. No alarms
+    D. Single datapoint alarms
+
+Answer: B
+Explanation: More samples and anomaly bands reduce noise.
+
+61. [M][SA] Your ASG scales out too slowly. What helps?
+    A. Disable health checks
+    B. Use warm pools and set instance warm-up correctly
+    C. Reduce AZs
+    D. Remove target tracking
+
+Answer: B
+Explanation: Pre-initialized capacity shortens time to serve.
+
+62. [M][MS] Which two improve DR readiness for a web app? (Choose 2)
+    A. Route 53 failover routing
+    B. Single-AZ database
+    C. Cross-Region backups/replication
+    D. Disable health checks
+
+Answer: A, C
+Explanation: DNS failover and replicated data improve recovery.
+
+63. [M][SA] What is the advantage of predictive scaling?
+    A. Eliminates monitoring
+    B. Provisions capacity ahead of demand spikes
+    C. Replaces target tracking
+    D. Forces single AZ
+
+Answer: B
+Explanation: Forecasting improves availability and latency during spikes.
+
+64. [M][SA] For an ALB, which metric best represents backend latency?
+    A. RequestCount
+    B. TargetResponseTime
+    C. 4XXErrorCount only
+    D. NewConnections
+
+Answer: B
+Explanation: TargetResponseTime measures time from load balancer to target response.
+
+65. [M][SA] Which design minimizes blast radius during deployments?
+    A. Monolith in one ASG
+    B. Microservices + blue/green per service
+    C. Single AZ
+    D. No health checks
+
+Answer: B
+Explanation: Fine-grained deployments isolate failures and enable fast rollback.
+
+66. [M][SA] How do you scale consumers for a Kinesis stream?
+    A. Scale by CPU only
+    B. Increase number of shards and consumers, use enhanced fan-out as needed
+    C. Change DNS
+    D. Use Route 53
+
+Answer: B
+Explanation: Shards determine parallelism; enhanced fan-out reduces latency.
+
+67. [M][SA] A web tier behind ALB needs scaling based on load. Which target metric?
+    A. CPU
+    B. ALB RequestCount per target
+    C. Disk IO
+    D. Memory only
+
+Answer: B
+Explanation: It correlates directly with requests per backend.
+
+68. [M][MS] Which two patterns reduce cascading failures? (Choose 2)
+    A. Circuit breakers
+    B. Timeouts with retries and jitter
+    C. Infinite retries
+    D. Tight coupling
+
+Answer: A, B
+Explanation: These patterns shield services from failing dependencies.
+
+69. [M][SA] What’s the purpose of Route 53 Traffic Flow?
+    A. Replace CloudFront
+    B. Visual editor for complex routing policies
+    C. Encrypt data
+    D. Manage IAM
+
+Answer: B
+Explanation: Traffic Flow designs and deploys complex, multi-policy routing.
+
+70. [M][SA] How can you reduce cold-start impact during scale-out of containerized workloads?
+    A. Use one big node
+    B. Pre-warm images in registries and use capacity providers/warm pools
+    C. Disable health checks
+    D. No scaling
+
+Answer: B
+Explanation: Warm images and pre-provisioned capacity reduce startup time.
+
+71. [H][SA] You operate active/active across two Regions. How do you keep state consistent?
+    A. Rely on sticky sessions only
+    B. Use global databases/tables or state externalization with idempotent writes
+    C. Use single Region DB
+    D. Disable caching
+
+Answer: B
+Explanation: Global data services and idempotency ensure cross-Region consistency.
+
+72. [H][SA] Your ASG flaps due to transient spikes. Best fix?
+    A. Lower cooldowns
+    B. Increase warm-up, use step scaling with stabilization window
+    C. Disable scaling
+    D. Single AZ
+
+Answer: B
+Explanation: Stabilization windows and correct warm-up prevent thrash.
+
+73. [H][MS] Which two reduce DNS-related outage impact? (Choose 2)
+    A. Use low TTLs appropriately
+    B. Use health checks with failover/latency routing
+    C. Disable DNSSEC
+    D. Hardcode IPs in clients
+
+Answer: A, B
+Explanation: Lower TTL + health-aware routing enables faster recovery.
+
+74. [H][SA] You need zero-downtime schema changes for Aurora. Strategy?
+    A. Stop writes completely
+    B. Online DDL, blue/green deployments, or dual-write compatibility windows
+    C. Manual edits only
+    D. Disable multi-AZ
+
+Answer: B
+Explanation: Online operations and phased cutovers reduce downtime risk.
+
+75. [H][MS] For a payment API, which two hardening steps help resiliency? (Choose 2)
+    A. Idempotency keys
+    B. Circuit breakers with fallback
+    C. Unlimited timeouts
+    D. Single AZ
+
+Answer: A, B
+Explanation: Prevent duplicate effects and protect from failing dependencies.
+
+76. [H][SA] You must detect partial Regional outage quickly. Approach?
+    A. Single metric
+    B. Synthetic canaries from multiple geos + multi-Region health checks
+    C. Manual tests
+    D. No logs
+
+Answer: B
+Explanation: External checks expose user-perceived availability and latency.
+
+77. [H][SA] How to protect downstream DB during traffic surges?
+    A. Remove queues
+    B. Use queues/buffers with backpressure and circuit breaking
+    C. Unlimited retries
+    D. Tight coupling
+
+Answer: B
+Explanation: Buffers smooth spikes and protect backends.
+
+78. [H][SA] Your app is CPU-bound at targets. What ELB feature helps?
+    A. Cross-zone off
+    B. HTTP/2 for header compression and multiplexing on ALB
+    C. Disable TLS
+    D. No keep-alive
+
+Answer: B
+Explanation: HTTP/2 improves efficiency and concurrency on ALB.
+
+79. [H][SA] During blue/green, which DNS strategy minimizes cache stickiness?
+    A. High TTL
+    B. Lower TTL during cutover, then restore
+    C. Disable health checks
+    D. Hardcode IPs
+
+Answer: B
+Explanation: Lower TTL allows faster propagation of new endpoints.
+
+80. [M][SA] Which CloudWatch feature finds top contributors to spikes?
+    A. Contributor Insights
+    B. Composite alarms
+    C. Logs Insights only
+    D. Math expressions only
+
+Answer: A
+Explanation: Contributor Insights identifies high-cardinality contributors.
+
+81. [M][MS] Which two reduce alarm fatigue? (Choose 2)
+    A. Composite alarms
+    B. Anomaly detection bands
+    C. Alarms on every debug metric
+    D. Single datapoint alarms
+
+Answer: A, B
+Explanation: Combine alarms and use anomaly baselines to reduce noise.
+
+82. [M][SA] NLB static IPs are useful for:
+    A. Allow-listing at partners and appliances
+    B. Replacing Route 53
+    C. Encrypting payloads
+    D. Eliminating AZs
+
+Answer: A
+Explanation: Static front-end IPs simplify firewall allow lists.
+
+83. [M][SA] What does graceful degradation aim to do?
+    A. Fail fast entirely
+    B. Maintain partial functionality under stress
+    C. Increase retries
+    D. Remove timeouts
+
+Answer: B
+Explanation: Design to serve essential features during incidents.
+
+84. [M][SA] Which combo enables event-driven infra changes on alerts?
+    A. S3 + EC2
+    B. CloudWatch Alarms -> EventBridge -> Lambda/SSM
+    C. Route 53 only
+    D. Inspector only
+
+Answer: B
+Explanation: Events trigger automation for remediation.
+
+85. [M][SA] Your API returns intermittent 5xx. Which tracing tool helps?
+    A. X-Ray
+    B. CloudTrail
+    C. Macie
+    D. Config
+
+Answer: A
+Explanation: X-Ray pinpoints latency and error hotspots.
+
+86. [M][SA] Which policy enables partial traffic to a new stack for A/B?
+    A. Route 53 weighted routing
+    B. Failover only
+    C. Simple routing
+    D. Latency-based only
+
+Answer: A
+Explanation: Weighted routing splits traffic by percentage.
+
+87. [H][SA] You need sub-1s recovery on target failures. Configure:
+    A. High health check intervals and thresholds
+    B. Low health check intervals with small unhealthy thresholds + fast deregistration
+    C. No health checks
+    D. DNS only
+
+Answer: B
+Explanation: Faster detection and removal improve MTTR.
+
+88. [H][SA] Your multi-Region app has shared dependencies. Reduce blast radius?
+    A. Single shared DB
+    B. Regional independence, per-Region failover plans, and read-local/write-global patterns
+    C. Single AZ
+    D. Hardcoded IPs
+
+Answer: B
+Explanation: Regional isolation and global data patterns improve resilience.
+
+89. [H][MS] Which two help avoid thundering herds on cache expiry? (Choose 2)
+    A. Jittered TTLs
+    B. Request coalescing
+    C. Disable caching
+    D. One large instance
+
+Answer: A, B
+Explanation: Stagger expirations and collapse identical requests.
+
+90. [M][SA] How to scale Lambda concurrency for sudden spikes safely?
+    A. No limits
+    B. Use reserved concurrency, provisioned concurrency for cold-start sensitive paths
+    C. Disable retries
+    D. Increase memory only
+
+Answer: B
+Explanation: Provisioned concurrency pre-initializes; reserved caps per-function concurrency.
+
+91. [M][SA] Which Route 53 feature lets you bias traffic by geography?
+    A. Geoproximity routing with traffic bias
+    B. Simple routing
+    C. Multi-value only
+    D. Private hosted zone
+
+Answer: A
+Explanation: Geoproximity allows directional biasing around geographic regions.
+
+92. [H][SA] You require continuous traffic during Region failover. Which combo?
+    A. Single Region + failover routing
+    B. Active/active with latency-based routing + health checks + global data
+    C. Simple routing only
+    D. High TTLs
+
+Answer: B
+Explanation: Active/active with health-aware DNS preserves continuity.
+
+93. [M][SA] What do CloudWatch alarms do during INSUFFICIENT_DATA?
+    A. Trigger always
+    B. Respect configured state (OK/ALARM) or treat as missing based on settings
+    C. Delete themselves
+    D. Pause metrics
+
+Answer: B
+Explanation: Alarm actions depend on treat-missing-data configuration.
+
+94. [M][SA] Which metric indicates ALB overload at backends?
+    A. SurgeQueueLength
+    B. CPU only
+    C. NetworkOut
+    D. HealthyHostCount
+
+Answer: A
+Explanation: Surge queue growth implies backends can’t keep up.
+
+95. [H][SA] What is a steady-state hypothesis in chaos engineering?
+    A. No failures exist
+    B. A measurable normal behavior used to validate resilience experiments
+    C. A DR plan
+    D. Scaling plan
+
+Answer: B
+Explanation: It defines expected system output under normal conditions.
+
+96. [M][SA] How do you reduce log ingestion costs while preserving insight?
+    A. Send all debug logs always
+    B. Use filters, sampling, and Logs Insights; ship high-cardinality fields sparingly
+    C. Remove logs
+    D. Compress metrics
+
+Answer: B
+Explanation: Control verbosity and query logs efficiently.
+
+97. [H][SA] Which pattern isolates noisy neighbor effects in shared services?
+    A. Single shared pool
+    B. Bulkhead pattern with per-tenant limits
+    C. No quotas
+    D. One big queue
+
+Answer: B
+Explanation: Bulkheads allocate capacity limits per tenant or function.
+
+98. [M][SA] What’s a good approach to visualize dependencies and latencies?
+    A. Dashboards only
+    B. X-Ray service map
+    C. VPC flow logs
+    D. Route 53 console
+
+Answer: B
+Explanation: Service map shows nodes, edges, and latencies/errors.
+
+99. [M][SA] Which HA pattern reduces cold-start for containers during traffic bursts?
+    A. Remove probes
+    B. Readiness/liveness probes + surge capacity and PDBs
+    C. High TTLs
+    D. No autoscaling
+
+Answer: B
+Explanation: Probes gate traffic to ready pods; surge capacity keeps extra ready.
+
+100. [H][SA] Your org needs quantifiable reliability goals driving alerting. Use:
+     A. SLIs/SLOs with error budgets informing alarms and rollouts
+     B. CPU only
+     C. Log error counts only
+     D. Uptime page
+
+Answer: A
+Explanation: SLOs and error budgets align reliability with business goals and guide operations.

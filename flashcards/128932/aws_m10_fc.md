@@ -241,3 +241,183 @@ A: Managed DDoS protection with detection, mitigation, cost protection, and 24/7
 ### Q60: What is the role of chaos engineering for HA?
 
 A: Intentionally inject failures to validate resilience and recovery mechanisms in production-like environments.
+
+### Q61: What is a composite alarm in CloudWatch?
+
+A: An alarm that combines multiple alarms into a single state to reduce noise.
+
+### Q62: What is anomaly detection in alarms?
+
+A: ML-based bands that define expected ranges for a metric to reduce false positives.
+
+### Q63: What is Contributor Insights?
+
+A: CloudWatch feature to find top contributors causing metric spikes from high-cardinality logs/metrics.
+
+### Q64: What is metric math?
+
+A: Deriving new time series from existing metrics for dashboards and alarms.
+
+### Q65: What is a warm pool in Auto Scaling?
+
+A: A pool of pre-initialized instances ready to join the ASG quickly during scale-out.
+
+### Q66: What is stabilization window in scaling?
+
+A: A period to let metrics settle before additional scaling actions, reducing flapping.
+
+### Q67: What is blue/green at the target group level?
+
+A: Use separate target groups per version and switch listener rules/weights to cut over.
+
+### Q68: What is canary analysis during deployments?
+
+A: Gradually shift a small percentage of traffic to a new version and monitor before full rollout.
+
+### Q69: What is AWS X-Ray used for?
+
+A: Distributed tracing to analyze requests and visualize service maps and latencies.
+
+### Q70: What is Route 53 Traffic Flow?
+
+A: A visual editor to design and deploy complex routing policies across Regions.
+
+### Q71: What is geoproximity routing with traffic bias?
+
+A: Route 53 policy to route by geographic region and bias traffic toward/away from a location.
+
+### Q72: What are Route 53 health checks integrated with policies?
+
+A: Health-aware routing that excludes unhealthy endpoints from DNS answers.
+
+### Q73: What is multi-Region active/active?
+
+A: Serving traffic from multiple Regions simultaneously for performance and resilience.
+
+### Q74: What’s multi-Region active/passive?
+
+A: Primary Region serves; secondary remains on standby for failover.
+
+### Q75: What is graceful degradation?
+
+A: Designing systems to preserve core functionality during partial failures or overload.
+
+### Q76: What is a circuit breaker?
+
+A: A mechanism that halts calls to a failing dependency temporarily to allow recovery.
+
+### Q77: What is exponential backoff with jitter?
+
+A: Increasing wait times between retries with randomness to avoid coordinated retries.
+
+### Q78: What is SurgeQueueLength on ALB?
+
+A: The number of requests queued at the load balancer, indicating backend saturation.
+
+### Q79: What is TargetResponseTime on ALB?
+
+A: The time it takes for targets to respond to requests, reflecting backend latency.
+
+### Q80: What is CloudWatch Logs Insights?
+
+A: A query engine to analyze log data at scale for troubleshooting and analytics.
+
+### Q81: What does provisioned concurrency do for Lambda?
+
+A: Pre-initializes Lambda execution environments to reduce cold-start latency.
+
+### Q82: What is reserved concurrency in Lambda?
+
+A: A per-function concurrency limit to protect downstream systems and control cost.
+
+### Q83: What is predictive scaling?
+
+A: ML-based forecasting that scales EC2 capacity ahead of expected load.
+
+### Q84: What is target tracking scaling?
+
+A: A policy that adjusts capacity to keep a metric near a specified target.
+
+### Q85: What is step scaling?
+
+A: Scaling by set amounts based on the magnitude of metric breaches.
+
+### Q86: What is scheduled scaling?
+
+A: Scaling at specific times based on known patterns (for example, business hours).
+
+### Q87: What is cross-zone load balancing?
+
+A: Distributing traffic evenly across targets in all enabled AZs.
+
+### Q88: What is NLB used for?
+
+A: Ultra-low latency L4 load balancing for TCP/UDP with static IPs and high throughput.
+
+### Q89: What is GWLB used for?
+
+A: Inserting and scaling third-party network appliances (firewalls) transparently.
+
+### Q90: What is an SLO?
+
+A: A Service Level Objective—target reliability/latency/availability metric guiding operations.
+
+### Q91: What is an SLI?
+
+A: A Service Level Indicator—measurable metric (for example, error rate) used to evaluate SLOs.
+
+### Q92: What is an error budget?
+
+A: The allowable unreliability within an SLO period that informs release/safeguard decisions.
+
+### Q93: What is health check interval vs threshold?
+
+A: Interval is probe frequency; threshold is number of consecutive failures/successes to change state.
+
+### Q94: What is latency-based routing?
+
+A: Route 53 policy that selects the Region with the lowest latency to the user.
+
+### Q95: What is failover routing?
+
+A: Route 53 policy that returns the primary unless it’s unhealthy, then returns the secondary.
+
+### Q96: What is multi-value answer routing?
+
+A: Route 53 policy returning multiple healthy records to increase availability.
+
+### Q97: What is a readiness probe (containers)?
+
+A: Health check that determines if a container is ready to receive traffic.
+
+### Q98: What is a liveness probe (containers)?
+
+A: Health check that determines if a container should be restarted.
+
+### Q99: What is provisioned throughput for DynamoDB?
+
+A: Capacity mode where you specify read/write capacity units with optional auto scaling.
+
+### Q100: What are DynamoDB adaptive capacity benefits?
+
+A: Automatically rebalances throughput to partitions with higher demand to avoid hot partitions.
+
+### Q101: What is Aurora Global Database used for?
+
+A: Low-lag cross-Region reads and rapid DR by promoting secondary Regions.
+
+### Q102: What is CloudWatch real-time metric stream?
+
+A: Near-real-time metric delivery to partners or Kinesis Data Firehose for analytics.
+
+### Q103: What is CloudWatch cross-account dashboarding?
+
+A: Display metrics across multiple accounts/Regions in a single dashboard.
+
+### Q104: What is Blue/Green with DNS?
+
+A: Use Route 53 weighted/latency policies to shift traffic between old and new stacks.
+
+### Q105: What is chaos experiment blast radius?
+
+A: The scope of components/traffic affected by a resilience test, kept small to limit risk.
